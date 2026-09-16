@@ -1,0 +1,49 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fragments",
+  "version": "0.9.0",
+  "description": "Build UI from your Fragments design-system contract, inspect approved components and token sources, and check the result.",
+  "author": {
+    "name": "Fragments",
+    "url": "https://usefragments.com"
+  },
+  "homepage": "https://usefragments.com",
+  "repository": "https://github.com/fragments-sdk/agent-plugin",
+  "license": "FSL-1.1-MIT",
+  "keywords": [
+    "design-system",
+    "components",
+    "tokens",
+    "mcp",
+    "react",
+    "ui",
+    "governance",
+    "preview"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Fragments",
+        "shortDescription": "Build and check UI against your approved design system",
+        "longDescription": "Create UI from your selected Fragments contract. Show approved component counts and token sources, use the actual component APIs, and check the result. Coding environments can check saved files and open a real app preview; connected chat checks the code you submit.",
+        "developerName": "Fragments",
+        "category": "Development",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://usefragments.com",
+        "privacyPolicyURL": "https://usefragments.com/privacy",
+        "termsOfServiceURL": "https://usefragments.com/terms",
+        "defaultPrompt": [
+          "Create me a settings page using this project’s contract and show the preview",
+          "Show this project’s verified component and token sources",
+          "Check the saved UI against its selected contract"
+        ],
+        "brandColor": "#F56138",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

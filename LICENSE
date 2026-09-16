@@ -1,0 +1,87 @@
+Functional Source License, Version 1.1, MIT Future License
+
+Licensor:  Conan McNicholl
+Software:  Fragments CLI (@usefragments/cli) and the private @repo/bench,
+@repo/cloud, @repo/design, @repo/docs, @repo/engine, @repo/mcp, and
+@repo/motion workspaces
+
+IMPORTANT: @usefragments/core, @usefragments/ui, and @repo/inspect are licensed
+separately under the MIT License. See packages/core/LICENSE, libs/ui/LICENSE,
+and packages/inspect/LICENSE for details.
+
+---
+
+## Terms and Conditions
+
+### Licensor ("We")
+
+The individual or entity listed above.
+
+### The Software
+
+The software identified above, including all source code, object code,
+documentation, and other files provided by the Licensor.
+
+### Grant of Rights
+
+Subject to the conditions below, the Licensor grants you a non-exclusive,
+worldwide, royalty-free license to use, copy, modify, create derivative works,
+and redistribute the Software, in each case subject to the limitations below.
+
+### Limitation — Competing Use
+
+You may not use the Software in, or to provide, a Commercial Product or Service
+that competes with the Software or with any product or service that the Licensor
+provides using the Software. A "Commercial Product or Service" is any product or
+service offered to third parties for a fee or other consideration.
+
+For clarity, the following uses are always permitted regardless of this limitation:
+
+  - Using the Software for your own internal business purposes
+  - Using the Software to build and deploy your own applications
+  - Using the Software for personal, educational, or evaluation purposes
+  - Providing professional services (consulting, integration) to your clients
+    that involve configuring or extending the Software
+
+The following are examples of Competing Use that are NOT permitted:
+
+  - Offering a hosted developer tools service that repackages or exposes
+    the functionality of the Software
+  - Selling or distributing a product that is a substitute for any product
+    or service offered by the Licensor
+  - Building and offering an MCP server, CLI tool, or code intelligence
+    platform that is substantially derived from the Software
+
+### Change Date and License
+
+On the second anniversary of each version's release date, the Licensor grants
+you the rights under the terms of the MIT License for that version.
+The "MIT License" means the license identified by SPDX as "MIT" and published
+at https://opensource.org/licenses/MIT.
+
+### No Warranties
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+### Limitation of Liability
+
+IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+### General
+
+If any provision of this License is held to be unenforceable, that provision
+shall be reformed only to the extent necessary to make it enforceable, and the
+remaining provisions shall continue in full force and effect.
+
+This License does not grant permission to use the trade names, trademarks,
+service marks, or product names of the Licensor, except as required for
+reasonable and customary use in describing the origin of the Software.
+
+---
+
+For more information about the Functional Source License, see https://fsl.software/
