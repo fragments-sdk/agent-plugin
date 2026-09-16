@@ -46,6 +46,11 @@ download a runtime, select a design system, or install duplicate hooks. Existing
 CLI setup owns hook installation and mode. A selected Cloud failure never falls
 back silently to local policy.
 
+Launch Codex or Claude Code from the project directory. The local distribution
+uses their native plugin manifests so the MCP process inherits that session's
+working directory. The hosted distribution uses the portable plugin format;
+its server runs in Fragments Cloud and does not depend on a local directory.
+
 The contract receipt reports approved component names (which can include compound
 exports), approved token names and source coverage. A separate saved-file check
 reports what code was evaluated. The host runs and inspects the actual app preview.
