@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design-System Pass"
+  short_description: "Check UI against approved components and tokens"
+  default_prompt: "Use $design-system-pass to find the selected contract and check this UI against its approved components and tokens."

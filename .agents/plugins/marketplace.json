@@ -1,0 +1,20 @@
+{
+  "name": "fragments",
+  "interface": {
+    "displayName": "Fragments"
+  },
+  "plugins": [
+    {
+      "name": "fragments",
+      "source": {
+        "source": "local",
+        "path": "./plugins/fragments"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    }
+  ]
+}

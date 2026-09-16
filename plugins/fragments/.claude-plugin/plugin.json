@@ -1,0 +1,22 @@
+{
+  "name": "fragments",
+  "version": "0.9.0",
+  "description": "Build UI from your Fragments design-system contract, inspect approved components and token sources, and check the result.",
+  "author": {
+    "name": "Fragments",
+    "url": "https://usefragments.com"
+  },
+  "homepage": "https://usefragments.com",
+  "repository": "https://github.com/fragments-sdk/agent-plugin",
+  "license": "FSL-1.1-MIT",
+  "keywords": [
+    "design-system",
+    "components",
+    "tokens",
+    "mcp",
+    "react",
+    "ui",
+    "governance",
+    "preview"
+  ]
+}

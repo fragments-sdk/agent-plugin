@@ -1,0 +1,6 @@
+interface:
+  display_name: "Create with Fragments"
+  short_description: "Build from verified components and preview the result"
+  default_prompt: "Use $create to build this UI with Fragments and show its contract, checks, and preview."
+policy:
+  allow_implicit_invocation: true

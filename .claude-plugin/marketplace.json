@@ -1,0 +1,12 @@
+{
+  "name": "fragments",
+  "owner": { "name": "Fragments", "url": "https://usefragments.com" },
+  "metadata": { "description": "Official Fragments agent plugin" },
+  "plugins": [
+    {
+      "name": "fragments",
+      "source": "./plugins/fragments",
+      "description": "Build and check UI against your approved Fragments design system."
+    }
+  ]
+}
