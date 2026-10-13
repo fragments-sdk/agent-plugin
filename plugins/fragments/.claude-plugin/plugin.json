@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back.",
   "author": {
     "name": "Fragments",
@@ -17,6 +17,12 @@
     "react",
     "mcp"
   ],
+  "displayName": "Fragments",
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://usefragments.com/docs/agents",
+  "supportUrl": "https://github.com/fragments-sdk/agent-plugin/issues",
+  "privacyPolicyUrl": "https://usefragments.com/privacy",
+  "termsOfServiceUrl": "https://usefragments.com/terms",
   "mcpServers": "./mcp/claude.json",
   "hooks": "./hooks/claude.json"
 }

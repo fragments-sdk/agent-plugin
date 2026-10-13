@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+- **The README is in the plugin's folder too,** and the plugin names its docs, support, privacy and terms pages, for
+  Claude's plugin directory. Nothing the plugin does has changed.
+- **Install it once:** if Claude Code has Fragments from Claude's plugin directory (`fragments@synced`), don't install
+  it from this marketplace as well.
+
 ## 1.0.0
 
 - **New engine.** The plugin runs the Drift Engine, the same one as the Fragments app and your CI, on your machine. It

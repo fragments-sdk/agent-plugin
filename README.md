@@ -30,6 +30,9 @@ claude plugin install fragments@fragments
 
 Restart any Claude Code session that's already open.
 
+**Install it once.** If you turned Fragments on in Claude's plugin directory, Claude Code already has it as
+`fragments@synced`: don't install it here too. Keep one or the other, so only one Fragments answers.
+
 ## Install in Codex
 
 ```bash
@@ -134,6 +137,8 @@ codex plugin marketplace remove fragments
 Claude Code deletes what Fragments keeps when you uninstall it (add `--keep-data` to keep it). Codex doesn't: delete
 `~/.fragments/agent-state` yourself.
 
+Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off there.
+
 ## Limits
 
 - **Shell writes:** a file the agent writes with a shell command, such as `cat > file`, gets no note right after the
@@ -156,7 +161,8 @@ Claude Code deletes what Fragments keeps when you uninstall it (add `--keep-data
 
 [Report an issue](https://github.com/fragments-sdk/agent-plugin/issues) · hello@usefragments.com ·
 [Website](https://usefragments.com) · [Privacy](https://usefragments.com/privacy) ·
-[Terms](https://usefragments.com/terms) · [Changes](CHANGELOG.md)
+[Terms](https://usefragments.com/terms) ·
+[Changes](https://github.com/fragments-sdk/agent-plugin/blob/main/CHANGELOG.md)
 
 ## License
 

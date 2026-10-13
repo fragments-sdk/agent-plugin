@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back.",
   "author": {
     "name": "Fragments",
