@@ -1,112 +1,164 @@
-# Fragments agent plugin
+# Fragments in Claude Code and Codex
 
-**Build with your design system.** Show the contract, use approved components and
-tokens, check the code, and open a real preview where the coding host supports it.
+Your coding agent checks its own UI work against your design system as it writes. It runs the same Drift Engine as the
+Fragments app and your CI, so all three give the same answer. You don't need the app open, or installed.
 
-Fragments works with your selected design system. It does not require the
-Fragments React component library.
+## What it does
 
-## Codex and Claude Code: local project integration
+- **After each edit**, the agent hears what that edit drifted from: a hand-written colour, size or radius, with your
+  system's value beside it.
+- **Before it hands back**, the agent fixes the drift it added, or tells you why it kept it.
+- **Before writing UI**, the agent can read your tokens and components, so it starts from what you already have.
 
-Requirements: Node.js compatible with the CLI, project-local
-`@usefragments/cli >=3.2.0`, an initialized Fragments project, and the app's usual
-dependencies. For a connected project, sign in and select its Fragments Cloud
-contract using the CLI's setup workflow. Run `fragments doctor` for recovery.
+It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
 
-From the project, install the CLI with your package manager, for example:
+## Before you start
 
-```sh
-npm install --save-dev @usefragments/cli@^3.2.0
-npx fragments --help
-npx fragments doctor
+- **Node 22.9 or newer.** Run `node --version`. macOS doesn't come with Node: get it from nodejs.org, or
+  `brew install node`.
+- **Claude Code or Codex**, installed and signed in.
+
+## Install in Claude Code
+
+```bash
+claude plugin marketplace add fragments-sdk/agent-plugin
 ```
 
-Add this repository as a plugin marketplace:
-
-```sh
-# Codex CLI
-codex plugin marketplace add fragments-sdk/agent-plugin
-codex plugin add fragments@fragments
-
-# Claude Code CLI
-claude plugin marketplace add fragments-sdk/agent-plugin
+```bash
 claude plugin install fragments@fragments
 ```
 
-Start a fresh task/session, then invoke:
+Restart any Claude Code session that's already open.
 
-```text
-Codex:       @fragments create me a settings page
-Claude Code: /fragments:create create me a settings page
+## Install in Codex
+
+```bash
+codex plugin marketplace add fragments-sdk/agent-plugin
 ```
 
-The local package connects `fragments-workspace` to the project's own CLI. Its
-five tools are `contract`, `search`, `get`, `tokens`, and `check`. It does not
-download a runtime, select a design system, or install duplicate hooks. Existing
-CLI setup owns hook installation and mode. A selected Cloud failure never falls
-back silently to local policy.
-
-Launch Codex or Claude Code from the project directory. The local distribution
-uses their native plugin manifests so the MCP process inherits that session's
-working directory. The hosted distribution uses the portable plugin format;
-its server runs in Fragments Cloud and does not depend on a local directory.
-
-The contract receipt reports approved component names (which can include compound
-exports), approved token names and source coverage. A separate saved-file check
-reports what code was evaluated. The host runs and inspects the actual app preview.
-Terminal hosts show its local URL; desktop hosts can open their browser pane.
-
-## Fragments Cloud: hosted integration
-
-The hosted profile connects to `https://app.usefragments.com/api/mcp`. Sign in to
-Fragments through the host's OAuth connection flow and select the allowed
-organization/project. No local CLI is required for this profile.
-
-The skill uses `design_system/contract`, approved-only component/token lookup,
-and `conform` / `prove_compliant` on submitted code. Repository paths in a
-response identify sources; the server cannot read laptop files by path. A coding
-host can combine this with its own checkout and preview. Ordinary chat receives
-checked source; this release does not include an embedded page renderer.
-
-Public directory availability depends on OpenAI review and publication. A GitHub
-marketplace installation is separate from an official directory listing.
-
-## Hooks and proof
-
-A skill guides the agent; it is not a write enforcement boundary. Fragments
-preserves configured hooks and reports actual evidence. PostToolUse checks happen
-after a write. Advisory feedback does not mean a write was prevented. A passing
-contract/code check does not replace build, interaction, or accessibility checks.
-
-## Build release artifacts (source repository)
-
-The maintained source lives in the Fragments repository at `plugins/codex`.
-From that source checkout:
-
-```sh
-node --test plugins/codex/scripts/mcp-launcher.test.cjs plugins/codex/scripts/package.test.mjs
-node plugins/codex/scripts/distribution.mjs /absolute/empty/output-directory
+```bash
+codex plugin add fragments@fragments
 ```
 
-Output:
+**Then trust the hooks, once.** The next time you open Codex, it asks you to review the Fragments hooks: choose **Trust
+all and continue**. If you skip it, Codex runs without them and asks again next time; to trust them later, type
+`/hooks` and press `t`. Until Fragments hears from them, it puts a line about this in the first Fragments tool result
+in each project, and again every 12 hours, so your agent can tell you. An update that changes the hooks needs trusting
+again.
 
-- `local/`: clean public marketplace repository for Codex and Claude Code.
-- `hosted/fragments/`: portable remote-MCP plugin with compatibility manifests.
-- `fragments-local-0.9.0.zip`: local marketplace bundle.
-- `fragments-hosted-0.9.0.zip`: hosted plugin bundle.
-- `fragments-skills-0.9.0.zip`: skill bundle for the OpenAI **With MCP** submission.
-- `SHA256SUMS`: archive checksums.
+**Updating in Codex** takes one extra step: after `codex plugin marketplace upgrade fragments`, run
+`codex plugin add fragments@fragments` again. A new session alone keeps the old version.
 
-Only allowlisted plugin files ship. No private application/runtime source,
-credentials, reviewer data, user logs, or development tests are bundled. Build
-outputs must be empty so a stale local server cannot leak into a hosted package.
-The brand assets are preserved. The license is FSL-1.1-MIT; see `LICENSE`.
+## Check it's working
+
+Ask your agent for a small change with a hand-written value, for example:
+"add a footer with `padding: 20px`". It should name the Fragments finding and say whether it kept the value.
+
+`claude plugin list` or `codex plugin list` should show `fragments`.
+
+## What it reads and writes
+
+- **Reads** your project's source, on your machine. **Fragments sends nothing off your machine:** it makes no network
+  calls. What it tells your agent joins the agent's conversation, like any tool result.
+- **Writes nothing to your project.** It keeps its working files in one folder: in Claude Code,
+  `~/.claude/plugins/data/fragments-fragments`; in Codex, `~/.fragments/agent-state`. In it:
+  - **Earlier contents of the files a turn changes,** so Fragments can tell what the turn added. Cleared when the turn
+    ends.
+  - **A git copy of your project's source** (`shadow`): the files it checks, copied the first time in a turn that the
+    agent runs a shell command that could write, so Fragments can see what the command changed. Older versions of
+    changed files go after an hour; the copy stays until you delete the folder.
+  - **Run records** (`sessions`): which files each turn changed, and how long each check took. Kept 7 days.
+  - **A compile cache** (`compile-cache`), so the checker starts faster.
+- **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
+  copy.
+- **To delete it,** remove that folder. Fragments makes a new one the next time it runs.
+- **CI** runs the checker pinned in your project at `.fragments/drift.cjs`, when the Fragments app has added it.
+
+## Update
+
+```bash
+claude plugin marketplace update fragments
+```
+
+```bash
+claude plugin update fragments@fragments
+```
+
+In Codex:
+
+```bash
+codex plugin marketplace upgrade fragments
+```
+
+```bash
+codex plugin add fragments@fragments
+```
+
+Codex picks up a new version only when you add the plugin again; a new session isn't enough.
+
+**Using the old plugin (0.9.0)?** Update the same way. 1.0 is a new plugin on a new engine, and it drops some of 0.9.0:
+
+- **The `search`, `get` and `tokens` tools.** The server was `fragments-workspace` and is now `fragments-drift`, with
+  `check`, `explain`, `design_system` and `contract`. Permission rules you wrote for the old server stop matching.
+- **The Fragments Cloud contract and the hosted profile.** Everything runs on your machine.
+- **Opening a preview, and `/fragments:create`**, with the `create` and `design-system-pass` skills. Ask your agent
+  directly.
+
+Then remove `@usefragments/cli` from your project, and the hooks it installed there (in `.claude/settings.json`,
+`.codex/hooks.json` or `.cursor/hooks.json`). Otherwise two engines answer. Delete its files too:
+`fragments.config.ts` (or `.js`), `fragments.manifest.json`, `.fragments/manifest.json` and `.fragments/sync.json`.
+Delete `.fragments/tokens.json` only if it has `catalogRevision` in it: that one came from the old CLI. Fragments keeps
+its own list of approved tokens at the same path, with `"version": 1` and a `tokens` list, so keep that one. While an
+old file is there, Fragments can't check your edits, and it tells you so once a session.
+
+## Uninstall
+
+```bash
+claude plugin uninstall fragments@fragments
+```
+
+```bash
+claude plugin marketplace remove fragments
+```
+
+In Codex:
+
+```bash
+codex plugin remove fragments@fragments
+```
+
+```bash
+codex plugin marketplace remove fragments
+```
+
+Claude Code deletes what Fragments keeps when you uninstall it (add `--keep-data` to keep it). Codex doesn't: delete
+`~/.fragments/agent-state` yourself.
+
+## Limits
+
+- **Shell writes:** a file the agent writes with a shell command, such as `cat > file`, gets no note right after the
+  edit. Only edit tools say which files they changed.
+- **Values the agent names:** if the agent's closing reply names a drifted value, for example one you asked it to keep,
+  Fragments treats it as explained and lets the agent finish.
+- **Very large files:** Fragments reads files up to 1 MB. If one of your app's stylesheets is bigger, or a file the
+  agent changed is, Fragments doesn't guess: it tells you once a session that it can't check, and why. Other big files,
+  such as generated code or data, don't stop it.
+
+## If something's wrong
+
+- **"Fragments is off: it needs Node 22.9 or later":** your `node` is too old. Upgrade it, then restart the session.
+- **Codex says nothing about drift:** trust the hooks: type `/hooks` and press `t`.
+- **Claude Code shows hook errors:** run `node --version` in the same terminal you start Claude Code from.
+- **Started from the Dock?** The Claude and Codex apps take your PATH from your login shell. If Fragments doesn't start
+  there, check that `node --version` works in a new terminal window.
 
 ## Support
 
-[Report a plugin issue](https://github.com/fragments-sdk/agent-plugin/issues).
-For account or privacy requests, contact hello@usefragments.com.
+[Report an issue](https://github.com/fragments-sdk/agent-plugin/issues) · hello@usefragments.com ·
+[Website](https://usefragments.com) · [Privacy](https://usefragments.com/privacy) ·
+[Terms](https://usefragments.com/terms) · [Changes](CHANGELOG.md)
 
-[Website](https://usefragments.com) ·
-[Privacy](https://usefragments.com/privacy) ·
-[Terms](https://usefragments.com/terms)
+## License
+
+Free to use for your own projects, including commercial ones, under the Fragments Local Use License; see
+[LICENSE](LICENSE). Versions 0.9.0 and earlier stay under FSL-1.1-MIT, as released.

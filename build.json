@@ -1,0 +1,27 @@
+{
+  "schema": "fragments-local-plugins/2",
+  "public": true,
+  "package": "@usefragments/check",
+  "version": "0.1.0",
+  "engineBuild": "5fff462fd375f7de32ce19cf10335557ed93e1f08d5eac77cc3cdb792b12ad6c",
+  "pluginVersion": "1.0.0",
+  "marketplace": "fragments",
+  "plugin": "fragments",
+  "packageBuildSha256": "359a4f8a1d5d83e105121b066ab2f4bbea6eeb935ea6ae2aeb7cda6997803b07",
+  "contentHash": "ccadbb44e8ae5addc2a346b7619b413e3304eca5d1229447fc0d51d9ccb3e657",
+  "receipts": {
+    "plugins/fragments": "d49411d4962e4f88465a67ccbfb0f2c06ee2419435d076c8b07d54ea7ba2738a"
+  },
+  "artifacts": {
+    "cli.cjs": {
+      "bytes": 4241004,
+      "sha256": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b"
+    }
+  },
+  "folders": {
+    "plugins/fragments": [
+      "claude",
+      "codex"
+    ]
+  }
+}

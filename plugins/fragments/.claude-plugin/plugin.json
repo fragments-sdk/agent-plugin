@@ -1,22 +1,22 @@
 {
   "name": "fragments",
-  "version": "0.9.0",
-  "description": "Build UI from your Fragments design-system contract, inspect approved components and token sources, and check the result.",
+  "version": "1.0.0",
+  "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back.",
   "author": {
     "name": "Fragments",
     "url": "https://usefragments.com"
   },
   "homepage": "https://usefragments.com",
   "repository": "https://github.com/fragments-sdk/agent-plugin",
-  "license": "FSL-1.1-MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "design-system",
-    "components",
+    "drift",
     "tokens",
-    "mcp",
+    "components",
     "react",
-    "ui",
-    "governance",
-    "preview"
-  ]
+    "mcp"
+  ],
+  "mcpServers": "./mcp/claude.json",
+  "hooks": "./hooks/claude.json"
 }

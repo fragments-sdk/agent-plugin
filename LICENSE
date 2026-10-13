@@ -1,87 +1,31 @@
-Functional Source License, Version 1.1, MIT Future License
+Fragments Local Use License
 
-Licensor:  Conan McNicholl
-Software:  Fragments CLI (@usefragments/cli) and the private @repo/bench,
-@repo/cloud, @repo/design, @repo/docs, @repo/engine, @repo/mcp, and
-@repo/motion workspaces
+Copyright 2026 Conan McNicholl. All rights reserved.
 
-IMPORTANT: @usefragments/core, @usefragments/ui, and @repo/inspect are licensed
-separately under the MIT License. See packages/core/LICENSE, libs/ui/LICENSE,
-and packages/inspect/LICENSE for details.
+"The Software" means the Fragments plugin for coding agents, including its engine, hooks, MCP server and skills, and
+the Fragments project checker (.fragments/drift.cjs). "The publisher" means Conan McNicholl.
 
----
+1. Free use. You may obtain, install, run and modify the Software for your own personal or commercial software
+development, free of charge and without a Fragments account. This includes installing it from the publisher's
+repository or from any marketplace or directory where the publisher lists it; the copies a coding-agent host, such as
+Claude Code or Codex, makes, caches or syncs for you in order to install, update or run it; and running it on your own
+machines, in CI, in dev containers, and in cloud environments that a coding-agent host runs for you.
 
-## Terms and Conditions
+2. Project copies. You may include the unmodified project checker and its license notices in a software project's
+repository, including a public repository, so contributors and that project's CI can perform the same checks. You may
+share the Software within your organization and with collaborators working on your projects, and your organization may
+keep an internal copy or mirror for its own people. Keep this license and all applicable third-party notices with
+those copies.
 
-### Licensor ("We")
+3. Reserved rights. This is proprietary software, not an open-source license. Except as sections 1 and 2 allow, no
+right is granted to publicly redistribute a standalone or repackaged Fragments engine or plugin, sublicense it, or
+offer it as a hosted service to third parties. Those uses need separate permission from the publisher. A fork created
+through GitHub's own features carries no rights beyond this license. Your own application code, design systems,
+findings and generated reports remain yours; this license imposes no license on them.
 
-The individual or entity listed above.
+4. Third-party software. Bundled dependencies keep their own licenses, reproduced in the THIRD_PARTY_NOTICES.txt files
+that ship with the Software. Those terms govern the applicable third-party code and are not restricted by this license.
 
-### The Software
-
-The software identified above, including all source code, object code,
-documentation, and other files provided by the Licensor.
-
-### Grant of Rights
-
-Subject to the conditions below, the Licensor grants you a non-exclusive,
-worldwide, royalty-free license to use, copy, modify, create derivative works,
-and redistribute the Software, in each case subject to the limitations below.
-
-### Limitation — Competing Use
-
-You may not use the Software in, or to provide, a Commercial Product or Service
-that competes with the Software or with any product or service that the Licensor
-provides using the Software. A "Commercial Product or Service" is any product or
-service offered to third parties for a fee or other consideration.
-
-For clarity, the following uses are always permitted regardless of this limitation:
-
-  - Using the Software for your own internal business purposes
-  - Using the Software to build and deploy your own applications
-  - Using the Software for personal, educational, or evaluation purposes
-  - Providing professional services (consulting, integration) to your clients
-    that involve configuring or extending the Software
-
-The following are examples of Competing Use that are NOT permitted:
-
-  - Offering a hosted developer tools service that repackages or exposes
-    the functionality of the Software
-  - Selling or distributing a product that is a substitute for any product
-    or service offered by the Licensor
-  - Building and offering an MCP server, CLI tool, or code intelligence
-    platform that is substantially derived from the Software
-
-### Change Date and License
-
-On the second anniversary of each version's release date, the Licensor grants
-you the rights under the terms of the MIT License for that version.
-The "MIT License" means the license identified by SPDX as "MIT" and published
-at https://opensource.org/licenses/MIT.
-
-### No Warranties
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
-### Limitation of Liability
-
-IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-### General
-
-If any provision of this License is held to be unenforceable, that provision
-shall be reformed only to the extent necessary to make it enforceable, and the
-remaining provisions shall continue in full force and effect.
-
-This License does not grant permission to use the trade names, trademarks,
-service marks, or product names of the Licensor, except as required for
-reasonable and customary use in describing the origin of the Software.
-
----
-
-For more information about the Functional Source License, see https://fsl.software/
+5. No warranty. To the extent permitted by applicable law, the Software is supplied as is, without warranties, and the
+publisher is not liable for damages arising from its use. Rights that applicable law does not permit to be excluded
+remain unaffected.

@@ -1,12 +1,17 @@
 {
   "name": "fragments",
-  "owner": { "name": "Fragments", "url": "https://usefragments.com" },
-  "metadata": { "description": "Official Fragments agent plugin" },
+  "owner": {
+    "name": "Fragments",
+    "url": "https://usefragments.com"
+  },
+  "metadata": {
+    "description": "The Fragments agent plugin for Claude Code and Codex"
+  },
   "plugins": [
     {
       "name": "fragments",
       "source": "./plugins/fragments",
-      "description": "Build and check UI against your approved Fragments design system."
+      "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back."
     }
   ]
 }

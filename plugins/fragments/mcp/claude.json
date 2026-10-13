@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fragments-drift": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/assets/launch.cjs",
+        "--receipt-sha256",
+        "d49411d4962e4f88465a67ccbfb0f2c06ee2419435d076c8b07d54ea7ba2738a"
+      ]
+    }
+  }
+}

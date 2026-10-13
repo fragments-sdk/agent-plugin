@@ -1,0 +1,27 @@
+{
+  "schema": "fragments-local-plugin/1",
+  "name": "fragments",
+  "version": "1.0.0",
+  "package": "@usefragments/check",
+  "packageVersion": "0.1.0",
+  "engineBuild": "5fff462fd375f7de32ce19cf10335557ed93e1f08d5eac77cc3cdb792b12ad6c",
+  "packageBuildSha256": "359a4f8a1d5d83e105121b066ab2f4bbea6eeb935ea6ae2aeb7cda6997803b07",
+  "generatorSha256": "a4bf4c7ba8143fbf9735cbea52134dc4e550413d881a1b17394e01ddd3de654d",
+  "contentHash": "ccadbb44e8ae5addc2a346b7619b413e3304eca5d1229447fc0d51d9ccb3e657",
+  "files": {
+    ".claude-plugin/plugin.json": "b955aa7a631393cee2d628ad7a298318cf9aeaa27363d08fd53389af1082d93f",
+    ".codex-plugin/plugin.json": "fe0149a05e236eb60aaae0d7d8010d5d9ecab0b2e0305d018a704eee3ea27aaa",
+    "LICENSE": "54317b9152e35b682d1c953a375d0a2c84ff7531740c6a5fdb4e6c7ac4bd183f",
+    "THIRD_PARTY_NOTICES.txt": "c51f374d9ce478d1a266371c77b6c3315c271bd453e578602ed54db5926f3769",
+    "assets/icon.svg": "7480426ad5f16bccaf9248c2e84f8c9ee388dc0f6a20d1f93b4a50a10e76a82a",
+    "assets/launch.cjs": "1eadd2a3c03e66acc4669553a2e8e5c9b3aeaf10ebf409d1e3ae9fcf1ebe07f9",
+    "assets/logo.png": "03e5db8cef7ee18db4037f1073960432320c499d65ea255b9686496786a66fb0",
+    "binding.json": "6a5352c4d397b3d06ac9855c9d93718f3c74ab39c59206275e89fa5fd0b04fdf",
+    "engine/LICENSE": "54317b9152e35b682d1c953a375d0a2c84ff7531740c6a5fdb4e6c7ac4bd183f",
+    "engine/dist/BUILD.json": "359a4f8a1d5d83e105121b066ab2f4bbea6eeb935ea6ae2aeb7cda6997803b07",
+    "engine/dist/cli.cjs": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b",
+    "hooks/claude.json": "2f93c28bb11fc45856fdc40f3c6db90ed7a946f59007e7326fd93af23f86db0c",
+    "hooks/codex.json": "7b260ed70130a6c20b8980fba5d881be385a8e995215b1e6303017fab371eaf0",
+    "skills/check-react-ui/SKILL.md": "d08b8d1a47cd72d70c1e22d52a3e5e19d86a350be3b469320bf825beddaaaef3"
+  }
+}
