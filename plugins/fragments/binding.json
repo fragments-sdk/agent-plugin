@@ -1,0 +1,5 @@
+{
+  "schema": "fragments-plugin-binding/1",
+  "project": "session",
+  "profile": "read"
+}

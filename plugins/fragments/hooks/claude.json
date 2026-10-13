@@ -1,0 +1,77 @@
+{
+  "description": "Fragments: the drift each edit adds, and what the turn still has before it hands back.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "plugin:fragments:fragments-drift",
+            "tool": "hook_prompt",
+            "input": {
+              "host": "claude",
+              "session_id": "${session_id}"
+            },
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "plugin:fragments:fragments-drift",
+            "tool": "hook_pre",
+            "input": {
+              "host": "claude",
+              "session_id": "${session_id}",
+              "tool_name": "${tool_name}",
+              "tool_input": "${tool_input}",
+              "cwd": "${cwd}"
+            },
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "plugin:fragments:fragments-drift",
+            "tool": "hook_post",
+            "input": {
+              "host": "claude",
+              "session_id": "${session_id}",
+              "tool_name": "${tool_name}",
+              "tool_input": "${tool_input}"
+            },
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "plugin:fragments:fragments-drift",
+            "tool": "hook_stop",
+            "input": {
+              "host": "claude",
+              "session_id": "${session_id}",
+              "last_assistant_message": "${last_assistant_message}"
+            },
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

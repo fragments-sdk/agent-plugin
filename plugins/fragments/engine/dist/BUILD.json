@@ -1,0 +1,407 @@
+{
+  "schema": "fragments-check-build/1",
+  "name": "@usefragments/check",
+  "version": "0.1.0",
+  "engineBuild": "5fff462fd375f7de32ce19cf10335557ed93e1f08d5eac77cc3cdb792b12ad6c",
+  "typescript": "5.7.3",
+  "mcpSdk": "1.32.1",
+  "buildTools": {
+    "node": "24.21.0",
+    "esbuild": "0.25.12"
+  },
+  "allowlist": [
+    "LICENSE",
+    "README.md",
+    "dist/BUILD.json",
+    "dist/THIRD_PARTY_NOTICES.txt",
+    "dist/cli.cjs",
+    "dist/drift.cjs",
+    "dist/index.cjs",
+    "package.json"
+  ],
+  "artifacts": {
+    "LICENSE": "54317b9152e35b682d1c953a375d0a2c84ff7531740c6a5fdb4e6c7ac4bd183f",
+    "README.md": "1f5b3215706d8264979290ce606d52c8f691aed14f29c77d262c95c9908dac7d",
+    "dist/THIRD_PARTY_NOTICES.txt": "c51f374d9ce478d1a266371c77b6c3315c271bd453e578602ed54db5926f3769",
+    "dist/cli.cjs": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b",
+    "dist/drift.cjs": "525ace7cc033ec17dc1c64b52479871c0089854b798e9d7bf37248488bedbb6d",
+    "dist/index.cjs": "990552d6c7b8091f9dceb115f0126c668e16aee9e26a83a95a9a6c1c2fcbdf25",
+    "package.json": "9c230bdac0cd7f7bca8da3cdabdb707228b6fc96a0f94b772a57c4f9f45807e0"
+  },
+  "omittedOptionalFeatures": [
+    "Contract proposal and save code (Fragments app only)",
+    "TypeScript optional source-map-support debugger hook"
+  ],
+  "bundles": {
+    "index.cjs": {
+      "bytes": 3862232,
+      "sha256": "990552d6c7b8091f9dceb115f0126c668e16aee9e26a83a95a9a6c1c2fcbdf25"
+    },
+    "cli.cjs": {
+      "bytes": 4241004,
+      "sha256": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b"
+    },
+    "drift.cjs": {
+      "bytes": 3888833,
+      "sha256": "525ace7cc033ec17dc1c64b52479871c0089854b798e9d7bf37248488bedbb6d"
+    }
+  },
+  "packages": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "version": "1.32.1",
+      "license": "MIT"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT"
+    },
+    {
+      "name": "ajv-formats",
+      "version": "3.0.1",
+      "license": "MIT"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.8",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "nanoid",
+      "version": "3.3.19",
+      "license": "MIT"
+    },
+    {
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC"
+    },
+    {
+      "name": "postcss",
+      "version": "8.5.6",
+      "license": "MIT"
+    },
+    {
+      "name": "postcss-scss",
+      "version": "4.0.9",
+      "license": "MIT"
+    },
+    {
+      "name": "source-map-js",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "typescript",
+      "version": "5.7.3",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.5",
+      "license": "MIT"
+    },
+    {
+      "name": "zod-to-json-schema",
+      "version": "3.25.2",
+      "license": "ISC"
+    }
+  ],
+  "sources": [
+    {
+      "file": "packages/check/package.json",
+      "sha256": "9c230bdac0cd7f7bca8da3cdabdb707228b6fc96a0f94b772a57c4f9f45807e0"
+    },
+    {
+      "file": "packages/check/src/cli.ts",
+      "sha256": "d7a4e98f0381af783340339363ff180f17fa06df01f64014323c4fba5b901cba"
+    },
+    {
+      "file": "packages/check/src/index.ts",
+      "sha256": "2bbf52809b45fd7919b94cac2ba83bf51207f8fde6f679dcc0f26a2d2041da8b"
+    },
+    {
+      "file": "runtime/accepted-read.ts",
+      "sha256": "7fce4d96cd27749dc5f804e1512d3329f22dccfc17a9e2944a410ef8d016d511"
+    },
+    {
+      "file": "runtime/approved.ts",
+      "sha256": "bd0c9af89855a02f04ccff3c1dc2d11e2febde440eaf6adc5cf0a17b3f85d77a"
+    },
+    {
+      "file": "runtime/bindings.ts",
+      "sha256": "5db1d19b1bbfedebd0c6200a1b1a1c8f4b209b9aa9351f9fbf50583fdc84d5a9"
+    },
+    {
+      "file": "runtime/breakpoints.ts",
+      "sha256": "e24767c6da62206dcb888d13968098ed43f33da86c24c1bba33477232c081090"
+    },
+    {
+      "file": "runtime/check-engine.ts",
+      "sha256": "a53cf28c15d20038d8db842abe49cbd18313b870e785c2c97f4ccac4d624831e"
+    },
+    {
+      "file": "runtime/check-findings.ts",
+      "sha256": "076e81f7e2d9ff4d9e68133c519d526645e55ce62e18022245bcc18af6c2e191"
+    },
+    {
+      "file": "runtime/check-version.ts",
+      "sha256": "b019381d2b5ec96f241e1fede8296b2d0a96436894e27802c519b40dff5ad1b3"
+    },
+    {
+      "file": "runtime/colour-distance.ts",
+      "sha256": "40d283c81883be5367b6ffdb0a53f809d1d712f0c2e89ba2b1d6bbe87be458f6"
+    },
+    {
+      "file": "runtime/config.ts",
+      "sha256": "b8778d13e827b570c0ed3fcbfe15b4ac33e68df9fd2c8433ccdfc6d43f2743a5"
+    },
+    {
+      "file": "runtime/contract-read.ts",
+      "sha256": "4cb37cbe7c547f133e1d27b68532265fc77ebf288b341aed5d9515365653d064"
+    },
+    {
+      "file": "runtime/contract-state.ts",
+      "sha256": "e754ca74c1d48018473f84b0e71737113287d150cb61c884f7f1ed344343f1b5"
+    },
+    {
+      "file": "runtime/contract-tool-definitions.ts",
+      "sha256": "ed6fa4060936491ea1285c8400e5d9b4f79a92255ea1b81bfa056261a99170c0"
+    },
+    {
+      "file": "runtime/contract.ts",
+      "sha256": "028e8a647f96ef582ddbee45497ea6eeac23f7cabdf15d42bfeaf1e2a0c3e112"
+    },
+    {
+      "file": "runtime/css.ts",
+      "sha256": "381c2e2f137c14c2698e207c247b203a5a498d333cf9861058777423aa141617"
+    },
+    {
+      "file": "runtime/design-system.ts",
+      "sha256": "634cdfcb2263b74c5d57e9b3b9febb61f54a9c563e4d7b10296690acf59f36bd"
+    },
+    {
+      "file": "runtime/diff.ts",
+      "sha256": "15c04a883b093de2ab7da2dd80f145c9c261880dff527110d3ef664dc1501ffb"
+    },
+    {
+      "file": "runtime/doctor.ts",
+      "sha256": "2a00f879c5a1c51f8c361aec17f01747fc7fdb665af2c170a2ea84ec18c33bb3"
+    },
+    {
+      "file": "runtime/drift-cli.ts",
+      "sha256": "c0ed7c8d50751a62241d7de6fde8204cc211d77a9240d900540d6e5303649113"
+    },
+    {
+      "file": "runtime/drift-mcp-paths.ts",
+      "sha256": "617cf4b6ba96eb37503265692b396ec3c17897b265a120ef2d85448f5b32c8fb"
+    },
+    {
+      "file": "runtime/drift-mcp-read.ts",
+      "sha256": "9412d874bd4c107fbb2f7067267d4bad36b0e13d0ccff37e5a6c2d091e075d4d"
+    },
+    {
+      "file": "runtime/drift-mcp-scopes.ts",
+      "sha256": "2ce3d02ea429940d931617759eff536edc8d76caabcde598b84a8066388fc642"
+    },
+    {
+      "file": "runtime/drift-mcp-tools.ts",
+      "sha256": "3860ca5b4a28d2c85684af7959dfc4b127d1c7a6f848e53606f8b22f43940ef3"
+    },
+    {
+      "file": "runtime/drift-mcp-worker.ts",
+      "sha256": "6de84955a3ae60139a3a7d2bc486d5a3a3fc717041d4a3301106e24ba75b66a8"
+    },
+    {
+      "file": "runtime/drift-mcp.ts",
+      "sha256": "f81c10c83c9ce1a1c638c826e84f230800ab26726762bf54431ac8749bc75c83"
+    },
+    {
+      "file": "runtime/drift.ts",
+      "sha256": "b9eb04e383d0abd2046f5e27f95fd94a8cf49265ca2d160ee2e5a36f22c560dd"
+    },
+    {
+      "file": "runtime/foundations.ts",
+      "sha256": "f0e8341d88f81db33cced150d7a7063c1f4adeec4b681f44d30858c368c1636e"
+    },
+    {
+      "file": "runtime/git.ts",
+      "sha256": "1879898c5940c2fde2f7e464727e30473cca932719201a5c15408a7356b5b555"
+    },
+    {
+      "file": "runtime/governance.ts",
+      "sha256": "5b41ef531803e904b3e962e3ba40b8235f79235792811a8160463802bbf86792"
+    },
+    {
+      "file": "runtime/history.ts",
+      "sha256": "c4b3c494cb55889c285f2d4e69168ab5f669462758c795ba1371a44cac777ed2"
+    },
+    {
+      "file": "runtime/hook-words.ts",
+      "sha256": "a28248991ede56cc5f660265aa99be53a7e4d301acafb4933108ae04a3e74237"
+    },
+    {
+      "file": "runtime/lint-config.ts",
+      "sha256": "57e98e3b5bb33439703c424fbd1975024cee93dc0b9bee1fa4a8cb675bf9d754"
+    },
+    {
+      "file": "runtime/mcp-result.ts",
+      "sha256": "64f4ba30cfc6560bd3307a789e29bafbd1fc3ac6551e3fd84a1cd33341efa611"
+    },
+    {
+      "file": "runtime/mcp-stdio.ts",
+      "sha256": "63ad3b53a7b183d862fc3c9a9df3d1efdf84697139260d1b5baee2c5da9f7ec1"
+    },
+    {
+      "file": "runtime/modules.ts",
+      "sha256": "05c2d8be6bc1b533e04c79545bc88bc10e424f1d9a1958041202a0a4708a5395"
+    },
+    {
+      "file": "runtime/oklch.ts",
+      "sha256": "28b7d6b5a07a2310d653a986e034941a7f5673e4296769201124bed0a030684c"
+    },
+    {
+      "file": "runtime/paths.ts",
+      "sha256": "090bac9177f1495bf33e075cc581a440acb83e12c8ead861c3ba49008c5a79ec"
+    },
+    {
+      "file": "runtime/react-router.ts",
+      "sha256": "e80c9b527ff3c0bde64f41b7d7590fa414a162e5c36144d12da2952f2f17ab25"
+    },
+    {
+      "file": "runtime/read-evidence.ts",
+      "sha256": "0a60d13187022dd54b2c9fd93f0f58fdf8110e9a0065fa252af97e847bed27c9"
+    },
+    {
+      "file": "runtime/roles.ts",
+      "sha256": "17ba8724caf8c999f067f6c52c708a3d66438fd9b18a95b0ddaa6527fa7280f9"
+    },
+    {
+      "file": "runtime/rule-read.ts",
+      "sha256": "fff22442cc40e63d6f3ac0a34058dfe8bf2d3d5fe8f20b38cd7d7b5cd45ccdd0"
+    },
+    {
+      "file": "runtime/rule-scope.ts",
+      "sha256": "cb857f2f9cebd3dc699539361184faeeee9ca4ebb09ffec83d34f2eaef06a990"
+    },
+    {
+      "file": "runtime/scan.ts",
+      "sha256": "8453f753b4c1ff11e9748187e200a9b7bc1d13ee3bfa0adaa86be94ac48633f4"
+    },
+    {
+      "file": "runtime/scope.ts",
+      "sha256": "fe5143a840dd568e6ddd823f33b4d30125298267fbecb96c68a17f1b295cd4fc"
+    },
+    {
+      "file": "runtime/session-hooks-names.ts",
+      "sha256": "93302962da9e9f04e1b115c1e384d30d40e3fd2892a1adc33abc8d72bfdbdd51"
+    },
+    {
+      "file": "runtime/session-hooks.ts",
+      "sha256": "9420a19a97b8f3bc101cc9dc5219da21f4ce4f88ecb4f872cd175ef974ea0c5d"
+    },
+    {
+      "file": "runtime/shadow.ts",
+      "sha256": "4e8979f2be169b9fd3d589cbbd31c6441d817fe5090a36414f4329d4b029d58c"
+    },
+    {
+      "file": "runtime/skills/foundations/states-motion/SKILL.md",
+      "sha256": "43495e08622fa590f179e2bb61318bea7f24e9ea72936717b7a1f82bd8c6c1cb"
+    },
+    {
+      "file": "runtime/skills/foundations/ux-laws/SKILL.md",
+      "sha256": "fb412355c505ccde6bb72b4d469dcb4b80157a50ba20b7c2ef1b13c96564064b"
+    },
+    {
+      "file": "runtime/skills/foundations/visual-craft/SKILL.md",
+      "sha256": "2994d853863ce00f138e92727a629454c19000c5bc158fb7c4ac988fbdfbbe11"
+    },
+    {
+      "file": "runtime/source.ts",
+      "sha256": "9b881b60eaa0e6ebc380962b201c922cdbc2122b1aeedcf0bd2ccdb1efea21ed"
+    },
+    {
+      "file": "runtime/spacingScale.ts",
+      "sha256": "7a32d4ad84cae1cc368f89f16eee0fdf639322d80e8eae77fbcdd53f60785075"
+    },
+    {
+      "file": "runtime/strays.ts",
+      "sha256": "0b27b56ddea6b2081008e6b98314fbf39494ab160b956d080b0cf9874e4cd703"
+    },
+    {
+      "file": "runtime/system-cva.ts",
+      "sha256": "8a9cccd08d55ec0f66494498bed49c37c7b2be70adc399a2b9a34422208d3743"
+    },
+    {
+      "file": "runtime/system-styles.ts",
+      "sha256": "1879e577446114ddee79b6aaa89074d79e39d491677224c69d648b6af74d24ae"
+    },
+    {
+      "file": "runtime/system.ts",
+      "sha256": "4fed4410b8036fa0d9b8e0cb9d6adee2668afe75830f0a3f2c9d7d32d4322311"
+    },
+    {
+      "file": "runtime/token-read.ts",
+      "sha256": "85f91ea84bfdb501ae9047ee9d53a45d685a2cafbe718344284d1015b31f047c"
+    },
+    {
+      "file": "runtime/token-value.ts",
+      "sha256": "e7fcd15faacdb3ee442cdd8fe1228c477bb0a7652714c9c2b06ac47ea279f3a2"
+    },
+    {
+      "file": "runtime/turn-hooks.ts",
+      "sha256": "e4a2f1ef7ec841d6a2cc1f5322bd837b0522866a680e69c2f5ec3444ef91551d"
+    },
+    {
+      "file": "runtime/typecheck.ts",
+      "sha256": "b0c177bcbec2ee443b73c876c78e42ff7d37512547b4479fd627cd06cdcdc10a"
+    },
+    {
+      "file": "runtime/warm.ts",
+      "sha256": "ee91a6faf2af76a664aacc7bbb72e4160cb489b55033e0dec1dba0761a78c245"
+    },
+    {
+      "file": "scripts/banners.mjs",
+      "sha256": "c172d4b3469d46042bdaa48362e6efa4aba1e65f2bad9e568811d13e8605c7c4"
+    },
+    {
+      "file": "scripts/build-check.mjs",
+      "sha256": "ffbeed60a6f3ed2875f1def4a0194407f98b344351315671c66c8e916013abf4"
+    },
+    {
+      "file": "scripts/build-drift.mjs",
+      "sha256": "0db0a3d39591cc110e3a02e4289b71c2f4861c23f89adb6f9b1efbb8fefb1051"
+    },
+    {
+      "file": "scripts/bundled-notices.mjs",
+      "sha256": "1ba18d9b10837ddd99382577c36755701dcea47cdf23f6806eb6f8a1603200f1"
+    },
+    {
+      "file": "scripts/check-engine-boundary.mjs",
+      "sha256": "de5008e9f71dc7420664877bd5964206f7cfd25ddf990c9f5f41f25c93486983"
+    },
+    {
+      "file": "scripts/check-versions.mjs",
+      "sha256": "7fa2c9c8ee993c323182292d65ba9e69cb1302807baa89b3b949fca7a23ad8e5"
+    },
+    {
+      "file": "scripts/engine-identity.mjs",
+      "sha256": "d20dccc6625ca01eb17906e06a97effec31cd4b45c27cfa8a05630f32bbcfb2d"
+    },
+    {
+      "file": "scripts/lazy-typescript.mjs",
+      "sha256": "04f8945cda1069cc2f516d77dbaea21d9b25aeea169b9d47f2c91e078867081a"
+    }
+  ]
+}
