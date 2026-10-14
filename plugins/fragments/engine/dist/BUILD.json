@@ -6,7 +6,7 @@
   "typescript": "5.7.3",
   "mcpSdk": "1.32.1",
   "buildTools": {
-    "node": "24.21.0",
+    "node": "22.22.0",
     "esbuild": "0.25.12"
   },
   "allowlist": [
@@ -21,29 +21,28 @@
   ],
   "artifacts": {
     "LICENSE": "54317b9152e35b682d1c953a375d0a2c84ff7531740c6a5fdb4e6c7ac4bd183f",
-    "README.md": "1f5b3215706d8264979290ce606d52c8f691aed14f29c77d262c95c9908dac7d",
+    "README.md": "6b86d19aa159c205be84dc2ea100265d588ca72064dc61b2e6352050eb01eae5",
     "dist/THIRD_PARTY_NOTICES.txt": "c51f374d9ce478d1a266371c77b6c3315c271bd453e578602ed54db5926f3769",
-    "dist/cli.cjs": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b",
-    "dist/drift.cjs": "525ace7cc033ec17dc1c64b52479871c0089854b798e9d7bf37248488bedbb6d",
-    "dist/index.cjs": "990552d6c7b8091f9dceb115f0126c668e16aee9e26a83a95a9a6c1c2fcbdf25",
+    "dist/cli.cjs": "f0d1faf0d78e4a50c7b7895662063a9e0312b755de409852eb2cf10ad146de6a",
+    "dist/drift.cjs": "71fe0f9cfc65c28bb612fdafc5afaca49e7ef02abbb9e1d37a5c9c6445a1ec52",
+    "dist/index.cjs": "f7382c8de636f39c05ffdf3114bb8d688d653e802778cda4cede909cec8ab9f6",
     "package.json": "9c230bdac0cd7f7bca8da3cdabdb707228b6fc96a0f94b772a57c4f9f45807e0"
   },
   "omittedOptionalFeatures": [
-    "Contract proposal and save code (Fragments app only)",
     "TypeScript optional source-map-support debugger hook"
   ],
   "bundles": {
     "index.cjs": {
-      "bytes": 3862232,
-      "sha256": "990552d6c7b8091f9dceb115f0126c668e16aee9e26a83a95a9a6c1c2fcbdf25"
+      "bytes": 3862836,
+      "sha256": "f7382c8de636f39c05ffdf3114bb8d688d653e802778cda4cede909cec8ab9f6"
     },
     "cli.cjs": {
-      "bytes": 4241004,
-      "sha256": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b"
+      "bytes": 4297468,
+      "sha256": "f0d1faf0d78e4a50c7b7895662063a9e0312b755de409852eb2cf10ad146de6a"
     },
     "drift.cjs": {
-      "bytes": 3888833,
-      "sha256": "525ace7cc033ec17dc1c64b52479871c0089854b798e9d7bf37248488bedbb6d"
+      "bytes": 3889281,
+      "sha256": "71fe0f9cfc65c28bb612fdafc5afaca49e7ef02abbb9e1d37a5c9c6445a1ec52"
     }
   },
   "packages": [
@@ -125,7 +124,7 @@
     },
     {
       "file": "packages/check/src/cli.ts",
-      "sha256": "d7a4e98f0381af783340339363ff180f17fa06df01f64014323c4fba5b901cba"
+      "sha256": "cb3dde95b5dbe869fd890238cf3e7023d5086449489fbc3a44221a6bae7ed1b2"
     },
     {
       "file": "packages/check/src/index.ts",
@@ -164,20 +163,32 @@
       "sha256": "40d283c81883be5367b6ffdb0a53f809d1d712f0c2e89ba2b1d6bbe87be458f6"
     },
     {
+      "file": "runtime/commits.ts",
+      "sha256": "0edff2b83d0c32d7e770df6105c1051c5abde2d07067df0cd8257a14d2e68bcb"
+    },
+    {
       "file": "runtime/config.ts",
       "sha256": "b8778d13e827b570c0ed3fcbfe15b4ac33e68df9fd2c8433ccdfc6d43f2743a5"
     },
     {
+      "file": "runtime/contract-change.ts",
+      "sha256": "e9acddd1a0f97fb97fa2562d5f3337493169305f35c290ad91272f4a5b00163f"
+    },
+    {
       "file": "runtime/contract-read.ts",
-      "sha256": "4cb37cbe7c547f133e1d27b68532265fc77ebf288b341aed5d9515365653d064"
+      "sha256": "a9ad54b2635eb469bee5c258175a3d86a45ed366a07f9681af6a66f3680caf03"
     },
     {
       "file": "runtime/contract-state.ts",
-      "sha256": "e754ca74c1d48018473f84b0e71737113287d150cb61c884f7f1ed344343f1b5"
+      "sha256": "be4e37ec4bd45205e119e88500362f73393cdbd75842597f06ab7e4c1690b7d9"
     },
     {
       "file": "runtime/contract-tool-definitions.ts",
-      "sha256": "ed6fa4060936491ea1285c8400e5d9b4f79a92255ea1b81bfa056261a99170c0"
+      "sha256": "8ce222ef47167aa5e14d3afe0e3b1a965faa56dcac6966f9f2d80bd76b8f604c"
+    },
+    {
+      "file": "runtime/contract-tools.ts",
+      "sha256": "6df1051d2c2a029ff1fa734e714de89ade12f04160061a15845e7c012dca789d"
     },
     {
       "file": "runtime/contract.ts",
@@ -201,15 +212,19 @@
     },
     {
       "file": "runtime/drift-cli.ts",
-      "sha256": "c0ed7c8d50751a62241d7de6fde8204cc211d77a9240d900540d6e5303649113"
+      "sha256": "707041e9d96948f6538a6128d59297180a49c0f1910eedaed617ff2acf89e22f"
     },
     {
       "file": "runtime/drift-mcp-paths.ts",
       "sha256": "617cf4b6ba96eb37503265692b396ec3c17897b265a120ef2d85448f5b32c8fb"
     },
     {
+      "file": "runtime/drift-mcp-plugin.ts",
+      "sha256": "2c7ac365d947703da7d9be864677cded929f4d7bedddb46beb69370e08a0606f"
+    },
+    {
       "file": "runtime/drift-mcp-read.ts",
-      "sha256": "9412d874bd4c107fbb2f7067267d4bad36b0e13d0ccff37e5a6c2d091e075d4d"
+      "sha256": "4cdeb02f406e3286175c2cfe1f47dcd0ba069f3509d7012fa84b0f35b1ee824d"
     },
     {
       "file": "runtime/drift-mcp-scopes.ts",
@@ -217,19 +232,27 @@
     },
     {
       "file": "runtime/drift-mcp-tools.ts",
-      "sha256": "3860ca5b4a28d2c85684af7959dfc4b127d1c7a6f848e53606f8b22f43940ef3"
+      "sha256": "2959f70a1d7b664fdfedf7a81b153e3b46da0cd7124a40d66e5e7e42189a9d67"
     },
     {
       "file": "runtime/drift-mcp-worker.ts",
       "sha256": "6de84955a3ae60139a3a7d2bc486d5a3a3fc717041d4a3301106e24ba75b66a8"
     },
     {
+      "file": "runtime/drift-mcp-write.ts",
+      "sha256": "bd06bf6791e8991933cb333af7076e9a51cb43ba47d453428421b17c4f43e65d"
+    },
+    {
       "file": "runtime/drift-mcp.ts",
-      "sha256": "f81c10c83c9ce1a1c638c826e84f230800ab26726762bf54431ac8749bc75c83"
+      "sha256": "cd72fdf316912a318fddea914befa74a5608d20e48d221f16deb27dca9ab8fd1"
     },
     {
       "file": "runtime/drift.ts",
       "sha256": "b9eb04e383d0abd2046f5e27f95fd94a8cf49265ca2d160ee2e5a36f22c560dd"
+    },
+    {
+      "file": "runtime/edits.ts",
+      "sha256": "4cf193415a8ac4157db45f0e5e3c1cad62404115365ea40e39b6f05c2de47580"
     },
     {
       "file": "runtime/foundations.ts",
@@ -249,7 +272,11 @@
     },
     {
       "file": "runtime/hook-words.ts",
-      "sha256": "a28248991ede56cc5f660265aa99be53a7e4d301acafb4933108ae04a3e74237"
+      "sha256": "6eaf14cd5893d68a9c76e6b43a6a178d0f2ea84b0648c96de8e139250348cb66"
+    },
+    {
+      "file": "runtime/journal-sweep.ts",
+      "sha256": "f8195ea99995c624e07eda024aa1de5092dc45504f48d6e15174e91df75a99f6"
     },
     {
       "file": "runtime/lint-config.ts",
@@ -261,7 +288,7 @@
     },
     {
       "file": "runtime/mcp-stdio.ts",
-      "sha256": "63ad3b53a7b183d862fc3c9a9df3d1efdf84697139260d1b5baee2c5da9f7ec1"
+      "sha256": "a02ed78f8c723db3f713bcc03d336ede27a66be5c655e29a408f61c0ff609618"
     },
     {
       "file": "runtime/modules.ts",
@@ -296,6 +323,10 @@
       "sha256": "cb857f2f9cebd3dc699539361184faeeee9ca4ebb09ffec83d34f2eaef06a990"
     },
     {
+      "file": "runtime/rule.ts",
+      "sha256": "6919ade50175676c354805e4edfdce4ad6e7c2fbebadc90d11e7a0dbdbf17cde"
+    },
+    {
       "file": "runtime/scan.ts",
       "sha256": "8453f753b4c1ff11e9748187e200a9b7bc1d13ee3bfa0adaa86be94ac48633f4"
     },
@@ -309,7 +340,7 @@
     },
     {
       "file": "runtime/session-hooks.ts",
-      "sha256": "9420a19a97b8f3bc101cc9dc5219da21f4ce4f88ecb4f872cd175ef974ea0c5d"
+      "sha256": "e8e49b9631b9261ebf6784bb7461c078d3e1eb5da25f25adddd78adea284042b"
     },
     {
       "file": "runtime/shadow.ts",
@@ -361,7 +392,7 @@
     },
     {
       "file": "runtime/turn-hooks.ts",
-      "sha256": "e4a2f1ef7ec841d6a2cc1f5322bd837b0522866a680e69c2f5ec3444ef91551d"
+      "sha256": "3ce4d22d935c2ee6720b1d9e227292fb14acf3bdb59fc3d78ebadc809c34e0fc"
     },
     {
       "file": "runtime/typecheck.ts",
@@ -377,7 +408,7 @@
     },
     {
       "file": "scripts/build-check.mjs",
-      "sha256": "ffbeed60a6f3ed2875f1def4a0194407f98b344351315671c66c8e916013abf4"
+      "sha256": "3abc3faff13250bd52d7793f7163547c0670111aef7d536b8d183b40f0a17654"
     },
     {
       "file": "scripts/build-drift.mjs",
@@ -389,7 +420,7 @@
     },
     {
       "file": "scripts/check-engine-boundary.mjs",
-      "sha256": "de5008e9f71dc7420664877bd5964206f7cfd25ddf990c9f5f41f25c93486983"
+      "sha256": "dba8fba192ca2030803fbd4652605ed9782c891882ae7ea1b73b8591707d6dcb"
     },
     {
       "file": "scripts/check-versions.mjs",

@@ -5,7 +5,7 @@
       "args": [
         "./assets/launch.cjs",
         "--receipt-sha256",
-        "3a4d6d31a4700778f9f30b902e5b96742272a9cce987f5882876dd2bb26da624"
+        "8853066e0eaba0c2d0c11412ffe805d503bfc6d213e62af3718d6498bd84c887"
       ],
       "cwd": ".",
       "env_vars": [

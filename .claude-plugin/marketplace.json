@@ -10,6 +10,7 @@
   "plugins": [
     {
       "name": "fragments",
+      "displayName": "Fragments",
       "source": "./plugins/fragments",
       "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back."
     }

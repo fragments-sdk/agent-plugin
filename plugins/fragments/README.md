@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/main/plugins/fragments/assets/logo.png" width="96" alt="Fragments"></p>
+
 # Fragments in Claude Code and Codex
 
 Your coding agent checks its own UI work against your design system as it writes. It runs the same Drift Engine as the
@@ -9,6 +11,14 @@ Fragments app and your CI, so all three give the same answer. You don't need the
   system's value beside it.
 - **Before it hands back**, the agent fixes the drift it added, or tells you why it kept it.
 - **Before writing UI**, the agent can read your tokens and components, so it starts from what you already have.
+- **Change the contract from the terminal.** Ask your agent to approve a token, set the components to build with, or
+  add the check to CI. It shows you what would change; Fragments then asks you in Claude Code's or Codex's own dialog,
+  and writes only if you tick its box and accept. Nothing is committed, and your agent can undo the last change. The
+  dialog covers what Fragments writes; your agent's own edits are your host's to ask about.
+- **A receipt for each turn.** When a turn ends with drift fixed, kept or still open, you see one line, such as
+  `Fragments receipt: 3 fixed, 1 kept, 0 open`, and the file with the details.
+- **In CI,** the check writes the same lines to the run's summary page on GitHub, once the project's checker is this
+  release's.
 
 It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
 
@@ -63,8 +73,12 @@ Ask your agent for a small change with a hand-written value, for example:
 
 - **Reads** your project's source, on your machine. **Fragments sends nothing off your machine:** it makes no network
   calls. What it tells your agent joins the agent's conversation, like any tool result.
-- **Writes nothing to your project.** It keeps its working files in one folder: in Claude Code,
-  `~/.claude/plugins/data/fragments-fragments`; in Codex, `~/.fragments/agent-state`. In it:
+- **Writes to your project only when you say yes** in your host's dialog, and only the files each proposal lists:
+  the contract's (`fragments.config.json` and files under `.fragments/`), `AGENTS.md` or `CLAUDE.md` for the
+  components it asks agents to use, and, if you add the check to CI, `.github/workflows/fragments-drift.yml`. Nothing
+  is committed: commit them to turn them on.
+- It keeps its working files in one folder: in Claude Code, `~/.claude/plugins/data/fragments-fragments`; in Codex,
+  `~/.fragments/agent-state`. In it:
   - **Earlier contents of the files a turn changes,** so Fragments can tell what the turn added. Cleared when the turn
     ends.
   - **A git copy of your project's source** (`shadow`): the files it checks, copied the first time in a turn that the
@@ -72,10 +86,15 @@ Ask your agent for a small change with a hand-written value, for example:
     changed files go after an hour; the copy stays until you delete the folder.
   - **Run records** (`sessions`): which files each turn changed, and how long each check took. Kept 7 days.
   - **A compile cache** (`compile-cache`), so the checker starts faster.
+  - **Receipts** (`receipts`): one Markdown file per turn that had drift, with the agent's own words on any it kept.
+    Kept 30 days.
+  - **Undo records** (`changes`, `contract`): the files a contract change wrote, before and after. Deleted after
+    7 days, at the next save or the next turn that ends with Fragments' hooks on.
 - **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
   copy.
 - **To delete it,** remove that folder. Fragments makes a new one the next time it runs.
-- **CI** runs the checker pinned in your project at `.fragments/drift.cjs`, when the Fragments app has added it.
+- **CI** runs the checker pinned in your project at `.fragments/drift.cjs`, added by the Fragments app or by your
+  agent with your yes. It is the same file either way.
 
 ## Update
 
@@ -140,6 +159,10 @@ Claude Code deletes what Fragments keeps when you uninstall it (add `--keep-data
 Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off there.
 
 ## Limits
+
+- **Saying yes needs a dialog.** Claude Code and Codex in a terminal show one; the Codex app has one too, not yet
+  tried with Fragments. Claude Code's desktop
+  app and print mode (`claude -p`) can't, so Fragments writes nothing there and tells your agent where you can say yes.
 
 - **Shell writes:** a file the agent writes with a shell command, such as `cat > file`, gets no note right after the
   edit. Only edit tools say which files they changed.

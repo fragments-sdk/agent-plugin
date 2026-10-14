@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back.",
   "author": {
     "name": "Fragments",
@@ -25,15 +25,19 @@
     "shortDescription": "Check UI against your design system as the agent writes",
     "developerName": "Fragments",
     "category": "Development",
+    "longDescription": "Fragments checks each edit your agent makes against your project’s design system, and has it fix the drift it added before it hands back. It can change the design contract and add the check to CI, writing only when you say yes in Codex’s dialog.",
     "capabilities": [
-      "Read"
+      "Read",
+      "Write"
     ],
+    "brandColor": "#3D5AE8",
     "websiteURL": "https://usefragments.com",
     "privacyPolicyURL": "https://usefragments.com/privacy",
     "termsOfServiceURL": "https://usefragments.com/terms",
     "defaultPrompt": [
       "Check the UI I changed against this project’s design system",
-      "Show this project’s components and tokens"
+      "Show this project’s components and tokens",
+      "Add the Fragments design check to this project’s CI"
     ],
     "composerIcon": "./assets/icon.svg",
     "logo": "./assets/logo.png"
