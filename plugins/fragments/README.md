@@ -7,9 +7,10 @@ Fragments app and your CI, so all three give the same answer. You don't need the
 
 ## What it does
 
-- **After each edit**, the agent hears what that edit drifted from: a hand-written colour, size or radius, with your
-  system's value beside it.
-- **Before it hands back**, the agent fixes the drift it added, or tells you why it kept it.
+- **After each edit**, the agent receives source locations for advisory findings, or detailed findings with your
+  system's value under a strict contract. A completed comparison with no new drift gets a short confirmation.
+- **Before it hands back**, the plugin reports new drift. Only an explicit strict contract may hold the turn for
+  a repair or an explanation; unconfigured and advisory projects receive suggestions.
 - **Before writing UI**, the agent can read your tokens and components, so it starts from what you already have.
 - **Change the contract from the terminal.** Ask your agent to approve a token, set the components to build with, or
   add the check to CI. It shows you what would change; Fragments then asks you in Claude Code's or Codex's own dialog,
@@ -21,6 +22,40 @@ Fragments app and your CI, so all three give the same answer. You don't need the
   release's.
 
 It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
+
+Installing the plugin does not initialize a design system or choose Fragments UI. Detected components belong to
+your project's own inventory and are reuse suggestions. Saved rules remain visible, but plugin turns are held
+only when `fragments.config.json` explicitly sets `contract.mode` to `"strict"`. A missing mode is advisory for
+plugin hooks; the standalone check and CI keep their existing verdict semantics.
+
+Contract setup is optional. The agent starts it only when you ask; a missing contract is not a reason to prompt
+you to create one. You can continue building with your current library or no library.
+
+## Review your contract
+
+Ask your agent to review this project's contract. In a host that supports MCP Apps, `contract_review` shows
+components, tokens, spacing and check settings. Select **Review changes**, inspect the proposed files, then choose
+**Save changes** to confirm those exact changes. **Undo last save** shows the saved change; **Confirm undo**
+restores its files if they have not changed since. **Not now** leaves pending choices unsaved.
+
+The panel owns contract confirmation. Your host may additionally ask permission to run its write tool, and
+its restrictions still apply. Panel Save does not require MCP form elicitation or a change of permission mode.
+A denied call is not retried through another writer. Expired or stale proposals need a fresh review; an uncertain
+write outcome is checked before another write is allowed. Nothing is committed.
+
+In a terminal, your agent shows the same state and proposed changes as text. The model-facing `contract_save`
+and `contract_undo` still require native confirmation. If that connection cannot display it or its approval
+policy automatically declines it, text inspection and proposals work but those tools do not write. The panel
+is the portable confirmation path in graphical hosts; all terminal permission modes are not certified.
+
+The local Claude Code/Codex plugin installation does not also register a cloud ChatGPT connector or a Claude
+Desktop extension. Panel support, permission handling and app-only tool isolation must be tested on the actual
+connection. A browser/protocol harness does not establish native compatibility.
+
+**Native acceptance, 15 October 2026:** the revised panel saved and undid an advisory contract in Codex desktop
+26.1007.71326 Full access and Claude Desktop 2.37337.1 (macOS). Claude's connection had no native elicitation;
+panel Save/Undo issued none. Cancelling Undo kept the saved files. Both completed Undo tests restored the
+exact starting files. This verifies those desktop configurations, not every host version or terminal mode.
 
 ## Before you start
 
@@ -55,9 +90,9 @@ codex plugin add fragments@fragments
 
 **Then trust the hooks, once.** The next time you open Codex, it asks you to review the Fragments hooks: choose **Trust
 all and continue**. If you skip it, Codex runs without them and asks again next time; to trust them later, type
-`/hooks` and press `t`. Until Fragments hears from them, it puts a line about this in the first Fragments tool result
-in each project, and again every 12 hours, so your agent can tell you. An update that changes the hooks needs trusting
-again.
+`/hooks` and press `t`. If the current connection has not heard from them, Fragments reports that uncertainty once
+so your agent can check its edits manually. A hook heard in an earlier connection does not suppress this notice.
+An update that changes the hooks needs trusting again. Silence alone does not establish that an edit was checked.
 
 **Updating in Codex** takes one extra step: after `codex plugin marketplace upgrade fragments`, run
 `codex plugin add fragments@fragments` again. A new session alone keeps the old version.
@@ -73,10 +108,11 @@ Ask your agent for a small change with a hand-written value, for example:
 
 - **Reads** your project's source, on your machine. **Fragments sends nothing off your machine:** it makes no network
   calls. What it tells your agent joins the agent's conversation, like any tool result.
-- **Writes to your project only when you say yes** in your host's dialog, and only the files each proposal lists:
+- **Writes to your project only after you confirm** in the review panel or a supported native host dialog,
+  and only the files each proposal lists:
   the contract's (`fragments.config.json` and files under `.fragments/`), `AGENTS.md` or `CLAUDE.md` for the
   components it asks agents to use, and, if you add the check to CI, `.github/workflows/fragments-drift.yml`. Nothing
-  is committed: commit them to turn them on.
+  is committed. Saved local rules take effect immediately. Commit and push a CI workflow to run it on GitHub.
 - It keeps its working files in one folder: in Claude Code, `~/.claude/plugins/data/fragments-fragments`; in Codex,
   `~/.fragments/agent-state`. In it:
   - **Earlier contents of the files a turn changes,** so Fragments can tell what the turn added. Cleared when the turn
@@ -126,12 +162,16 @@ Codex picks up a new version only when you add the plugin again; a new session i
 - **Opening a preview, and `/fragments:create`**, with the `create` and `design-system-pass` skills. Ask your agent
   directly.
 
-Then remove `@usefragments/cli` from your project, and the hooks it installed there (in `.claude/settings.json`,
-`.codex/hooks.json` or `.cursor/hooks.json`). Otherwise two engines answer. Delete its files too:
-`fragments.config.ts` (or `.js`), `fragments.manifest.json`, `.fragments/manifest.json` and `.fragments/sync.json`.
-Delete `.fragments/tokens.json` only if it has `catalogRevision` in it: that one came from the old CLI. Fragments keeps
-its own list of approved tokens at the same path, with `"version": 1` and a `tokens` list, so keep that one. While an
-old file is there, Fragments can't check your edits, and it tells you so once a session.
+If you choose to migrate that project, preserve its old configuration first and review which rules you want to
+carry forward. Remove `@usefragments/cli` and only its hook entries (in `.claude/settings.json`, `.codex/hooks.json`
+or `.cursor/hooks.json`) when you retire that engine, so two engines do not answer. Do not delete whole host settings
+files or another tool's hooks.
+
+Legacy files can include `fragments.config.ts` (or `.js`), `fragments.manifest.json`, `.fragments/manifest.json`
+and `.fragments/sync.json`. A `.fragments/tokens.json` with `catalogRevision` belongs to the old CLI; the current
+approved-token file uses `"version": 1` and a `tokens` list. Review and remove only obsolete files after preserving
+the policy you need. Until incompatible authority is resolved, Fragments reports incomplete coverage and leaves
+the configuration alone; an update does not authorize an automatic migration.
 
 ## Uninstall
 
@@ -160,9 +200,9 @@ Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off ther
 
 ## Limits
 
-- **Saying yes needs a dialog.** Claude Code and Codex in a terminal show one; the Codex app has one too, not yet
-  tried with Fragments. Claude Code's desktop
-  app and print mode (`claude -p`) can't, so Fragments writes nothing there and tells your agent where you can say yes.
+- **Confirmation depends on the surface.** Compatible graphical panels use explicit Save changes and Confirm
+  undo; the host must forward app-only tool calls and private metadata. Native model/terminal tools still need
+  the host's confirmation dialog. Host permission denials remain in force; rendering alone grants no write access.
 
 - **Shell writes:** a file the agent writes with a shell command, such as `cat > file`, gets no note right after the
   edit. Only edit tools say which files they changed.
@@ -175,7 +215,8 @@ Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off ther
 ## If something's wrong
 
 - **"Fragments is off: it needs Node 22.9 or later":** your `node` is too old. Upgrade it, then restart the session.
-- **Codex says nothing about drift:** trust the hooks: type `/hooks` and press `t`.
+- **Codex says nothing about drift:** inspect `/hooks` and trust the hooks if you want automatic checks. Until
+  current feedback establishes coverage, ask the agent to run `check` on its edits.
 - **Claude Code shows hook errors:** run `node --version` in the same terminal you start Claude Code from.
 - **Started from the Dock?** The Claude and Codex apps take your PATH from your login shell. If Fragments doesn't start
   there, check that `node --version` works in a new terminal window.
