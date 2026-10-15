@@ -3,19 +3,23 @@
   "public": true,
   "package": "@usefragments/check",
   "version": "0.1.0",
-  "engineBuild": "5fff462fd375f7de32ce19cf10335557ed93e1f08d5eac77cc3cdb792b12ad6c",
-  "pluginVersion": "1.0.1",
+  "engineBuild": "bcb162ac62bfb0650058ceab4bf4ded4b86b5fa8dd6c0aa1b9246d4d9b6f3e88",
+  "pluginVersion": "1.1.0",
   "marketplace": "fragments",
   "plugin": "fragments",
-  "packageBuildSha256": "359a4f8a1d5d83e105121b066ab2f4bbea6eeb935ea6ae2aeb7cda6997803b07",
-  "contentHash": "5a3c4fa4dd305542c3587fe6c219be6b5127a4ab9e875d767075413401697671",
+  "packageBuildSha256": "702938ae098e67c96b8ee93507b6a8f12cfbc25b66a59cf51730bb05741089a3",
+  "contentHash": "618a25cf6d13292ae79e5dc8fe9612841783b01febd9a669cbe452f8c83bfb27",
   "receipts": {
-    "plugins/fragments": "3a4d6d31a4700778f9f30b902e5b96742272a9cce987f5882876dd2bb26da624"
+    "plugins/fragments": "9dd5aec67d30a198a7c7b17c28ddacb922bc56965f0e493d6622c0a874ab464a"
   },
   "artifacts": {
     "cli.cjs": {
-      "bytes": 4241004,
-      "sha256": "37b1fe64f56384aad89162cd33eaccdf6edfe7ab797884b88393eddb4f90ad9b"
+      "bytes": 5243229,
+      "sha256": "d9f780ac2fb827e5b74b1630a902106f143cd2faf445aee01c2491bff927fcbc"
+    },
+    "drift.cjs": {
+      "bytes": 3889281,
+      "sha256": "24ed0ee7be9dfe9704e9e69fc1d1435fd26e7f09d04862f19ab3ad8fa31f3bd2"
     }
   },
   "folders": {

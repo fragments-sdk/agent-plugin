@@ -1,5 +1,5 @@
 // Copyright 2026 Conan McNicholl. Fragments Local Use License, see LICENSE.
-// Packaging adapter only: verify copied bytes, then run the canonical read-only CLI. Written so any old Node can read it
+// Packaging adapter only: verify copied bytes, then run the canonical CLI. Written so any old Node can read it
 // (no arrow functions, template strings, destructuring or `node:` imports): on one too old for the engine, it says so.
 'use strict';
 var fs = require('fs');
@@ -78,7 +78,10 @@ function main() {
   // run time: it names the project checker this release writes (runtime/contract-state.ts, checkEdition).
   var required = ['binding.json', 'assets/launch.cjs', 'engine/dist/cli.cjs', 'engine/dist/BUILD.json', 'engine/LICENSE', 'LICENSE', 'THIRD_PARTY_NOTICES.txt'];
   if (receipt.schema !== 'fragments-local-plugin/1' || typeof receipt.name !== 'string' || !receipt.name || !receipt.files || !required.every(function (file) { return receipt.files[file]; })) throw new Error('Plugin build receipt is incomplete.');
+  // The project checker (engine/dist/drift.cjs, 3.9 MB) is not read at every start: it is only ever copied into a project,
+  // and its writer refuses bytes that are not the ones BUILD.json, checked here, records (runtime/contract-state.ts).
   Object.keys(receipt.files).forEach(function (file) {
+    if (file === 'engine/dist/drift.cjs') return;
     if (sha(read(file)) !== receipt.files[file]) throw new Error('Packaged artifact changed: ' + file + '. Regenerate and reinstall the reviewed plugin.');
   });
   var binding = JSON.parse(read('binding.json'));

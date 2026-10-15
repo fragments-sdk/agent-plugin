@@ -1,7 +1,7 @@
 {
   "name": "fragments",
-  "version": "1.0.1",
-  "description": "Your coding agent checks its UI against your design system as it writes: the drift each edit adds, fixed before it hands back.",
+  "version": "1.1.0",
+  "description": "Your coding agent checks UI against your project’s design system as it writes, with advisory findings unless you choose a strict contract.",
   "author": {
     "name": "Fragments",
     "url": "https://usefragments.com"
@@ -25,15 +25,19 @@
     "shortDescription": "Check UI against your design system as the agent writes",
     "developerName": "Fragments",
     "category": "Development",
+    "longDescription": "Fragments checks UI edits against your project’s design system. Findings are advisory unless you choose a strict contract. Setup is optional: review exact contract or CI changes, then confirm them in the review panel or your host’s supported native dialog. Undo restores the last saved change while its files are unchanged.",
     "capabilities": [
-      "Read"
+      "Read",
+      "Write"
     ],
+    "brandColor": "#3D5AE8",
     "websiteURL": "https://usefragments.com",
     "privacyPolicyURL": "https://usefragments.com/privacy",
     "termsOfServiceURL": "https://usefragments.com/terms",
     "defaultPrompt": [
       "Check the UI I changed against this project’s design system",
-      "Show this project’s components and tokens"
+      "Show this project’s components and tokens",
+      "Add the Fragments design check to this project’s CI"
     ],
     "composerIcon": "./assets/icon.svg",
     "logo": "./assets/logo.png"
