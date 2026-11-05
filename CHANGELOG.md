@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.0
+
+- **Frames: mock a screen before you build it.** Ask your agent for a layout, every state of a component or two
+  directions to compare. Each frame is drawn on your project's own components and tokens in your own Chrome, Edge,
+  Brave or Chromium (headless), pictured, measured and judged in about a second, and kept outside your project, in
+  `~/.fragments/frames/`. Start from a page as it is today, or from nothing. In a host that shows MCP Apps, the set
+  opens on one canvas in the chat as the agent draws it, part by part, and **Pick** chooses one. With the Fragments
+  app open, `frame_use` turns the picked frame into real code as one change with Undo.
+- **See the real pages, and judge the change.** With the Fragments app open on your project, `see` pictures its
+  pages and `judge` pictures them again after the edit, holding the change to your ask, to the drift it added and to
+  a detail audit. A row that could not run says so; it is never a pass.
+- **Try two or three directions.** With the app open, `take` builds each direction as real code in its own copy of
+  your app and pictures it; `use` applies the one you pick as one change with Undo.
+- **Find missing page examples** with the `discover-pages` skill, from your source and available browser context.
+
+Frames needs no app and no sign-in. `see`, `judge`, `take`, `use` and `frame_use` need the Fragments app open on this
+computer; without it they say so in one line and change nothing.
+
 ## 1.1.0
 
 - **Optional contract review.** Ask to review the contract in a compatible MCP Apps host for a view of components,

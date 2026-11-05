@@ -5,13 +5,17 @@
       "args": [
         "./assets/launch.cjs",
         "--receipt-sha256",
-        "9dd5aec67d30a198a7c7b17c28ddacb922bc56965f0e493d6622c0a874ab464a"
+        "816830aaa1aaecd43f26d74da54a5bad64e7feda242201b1b7612eef333ca1d0"
       ],
       "cwd": ".",
       "env_vars": [
         "FRAGMENTS_HOSTED",
-        "FRAGMENTS_STATE"
-      ]
+        "FRAGMENTS_STATE",
+        "FRAGMENTS_DOOR",
+        "FRAGMENTS_RUNS",
+        "FRAGMENTS_PROJECTS"
+      ],
+      "tool_timeout_sec": 150
     }
   }
 }
