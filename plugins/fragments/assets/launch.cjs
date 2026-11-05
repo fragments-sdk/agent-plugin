@@ -96,6 +96,8 @@ function main() {
   compileCache();
   // No network: in a partial clone, Git never fetches an object the project lacks, in any of the server's Git calls.
   process.env.GIT_NO_LAZY_FETCH = '1';
+  // The bundler for a project with none (runtime/frames/kit.ts) is beside this file, not beside the CLI argv[1] will name.
+  process.env.FRAGMENTS_CARRIED_ESBUILD = path.join(root, 'assets/esbuild-wasm');
   // The canonical server spawns workers from argv[1]; point it at its bundled CLI. `--plugin`: its host was given the
   // turn hooks, so a Codex session that never runs them is told once (runtime/drift-mcp.ts).
   process.argv = [process.execPath, cli, 'mcp', project, '--stdio', '--profile', binding.profile, '--plugin'];

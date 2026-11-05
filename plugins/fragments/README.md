@@ -20,6 +20,22 @@ Fragments app and your CI, so all three give the same answer. You don't need the
   `Fragments receipt: 3 fixed, 1 kept, 0 open`, and the file with the details.
 - **In CI,** the check writes the same lines to the run's summary page on GitHub, once the project's checker is this
   release's.
+- **Mock a screen before you build it.** Ask for a layout, every state of a component, or two directions to compare:
+  the agent draws frames on your project's own components and tokens in your own Chrome, Edge, Brave or Chromium
+  (headless), pictures, measures and judges each, and keeps them outside your project, in `~/.fragments/frames/`.
+  Where your host shows MCP Apps, the set opens on a canvas in the chat and **Pick** chooses one. With the Fragments
+  app open, the picked frame becomes real code as one change with Undo.
+- **Try two or three directions.** With the Fragments app open, `take` builds each direction as real code in its own
+  copy of your app and pictures it, and `use` applies the one you pick as one change with Undo. Without the app,
+  both say so in one line.
+- **Find missing page examples.** Ask your agent to use `discover-pages` to investigate dynamic routes from source
+  and available browser context. Inside Fragments, its page tools can register one real example per pattern. A
+  standalone plugin session reports verified candidates and unmet prerequisites, without registering examples or
+  claiming screenshot coverage. Your app's source and data stay unchanged.
+- **See the real pages, and judge the change.** With the Fragments app open on your project, `see` pictures its pages
+  (at the widths and states you name) through the app, and `judge` pictures them again after the edit and holds the
+  change to your ask, to the drift it added and to a detail audit (type scale, 4 px grid, contrast, target size,
+  nothing cut short). A row that could not run says so; it is never a pass. Without the app, both say so in one line.
 
 It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
 
@@ -62,6 +78,7 @@ exact starting files. This verifies those desktop configurations, not every host
 - **Node 22.9 or newer.** Run `node --version`. macOS doesn't come with Node: get it from nodejs.org, or
   `brew install node`.
 - **Claude Code or Codex**, installed and signed in.
+- **For frames:** Chrome, Edge, Brave or Chromium. Windows always has Edge.
 
 ## Install in Claude Code
 
@@ -106,8 +123,10 @@ Ask your agent for a small change with a hand-written value, for example:
 
 ## What it reads and writes
 
-- **Reads** your project's source, on your machine. **Fragments sends nothing off your machine:** it makes no network
-  calls. What it tells your agent joins the agent's conversation, like any tool result.
+- **Reads** your project's source, on your machine. **The plugin sends nothing off your machine:** it makes no network
+  calls. What it tells your agent joins the agent's conversation, like any tool result. One exception goes through
+  the app: `judge`, given an ask, has the Fragments app judge it with Claude on the account you already use there,
+  so the ask and the words on the pictured page go to Claude, as they do in the app.
 - **Writes to your project only after you confirm** in the review panel or a supported native host dialog,
   and only the files each proposal lists:
   the contract's (`fragments.config.json` and files under `.fragments/`), `AGENTS.md` or `CLAUDE.md` for the
@@ -126,6 +145,8 @@ Ask your agent for a small change with a hand-written value, for example:
     Kept 30 days.
   - **Undo records** (`changes`, `contract`): the files a contract change wrote, before and after. Deleted after
     7 days, at the next save or the next turn that ends with Fragments' hooks on.
+- **Pictures** from `see` and `judge` are kept outside your project, in `~/.fragments/runs`: each page's first and
+  latest picture and what the app read on it, by run. The newest 20 runs of each project are kept.
 - **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
   copy.
 - **To delete it,** remove that folder. Fragments makes a new one the next time it runs.
