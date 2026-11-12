@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.3.0
+
+- **Verdicts read like a design team's review:** one primary action per region, legible fields and words, controls
+  on one line, real content. Each is a row at the part, with its fix.
+- **Start from a component, not only a page.** `frame_from_page` takes a part's own markup when it needs the running
+  app to draw.
+- **Claude Code shows the plugin as Fragments.** Its server is now `fragments` there (Codex keeps `fragments-drift`);
+  permission rules naming `mcp__plugin_fragments_fragments-drift__` need the new name.
+- **Ready for the plugin directories.** `stores/claude/fragments` is the copy Claude's plugin directory reads, every
+  file under its 5 MiB limit: it leaves out the bundler Frames carries, so in a project without esbuild a frame draws
+  plain tags. `stores/openai/fragments` is a skills-only copy for OpenAI's Plugin Directory: the agent runs the checker
+  when you ask, with no hooks or server. Install from this marketplace as before.
+- **The engine is two files:** `engine/dist/cli.cjs` loads the TypeScript compiler from `engine/dist/typescript.cjs`
+  beside it, so no file in the plugin is over 5 MiB.
+- **Every tool has a title** that hosts can show. `judge`, `take`, `frame_use` and `frame_from_page` say they can reach
+  past your computer.
+- **The README says what the plugin runs, sends and fetches,** and which tools need the Fragments app, with its download
+  link. Skills say plainly when their tools aren't in the session.
+
 ## 1.2.0
 
 - **Frames: mock a screen before you build it.** Ask your agent for a layout, every state of a component or two

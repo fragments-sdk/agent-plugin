@@ -20,3 +20,5 @@ Each row says held, to look at, missed or not judged, with where and why. Fix wh
 `see` and `judge` keep a task's pictures and verdict together in one run, outside the project. Pass `new: true` to `see` to start a new run for a new task.
 
 **When Fragments can't picture.** The pictures come from the Fragments app's own camera, so it must be open on this project with the project started. If it isn't, `see` says so in one line: tell the person that line and continue with `check`. Never start the project's server yourself to get a picture, and never stand in a browser screenshot for a missing picture. A sign-in wall, a step that matched nothing or a page that landed elsewhere is said beside its picture: say it, don't guess past it.
+
+If `see` and `judge` are not in this session, say so plainly in one line. They load in Claude Code, Codex, and Cowork on the person’s computer; a chat that ignores local servers and hooks, such as Claude’s web chat, has none of them. They also need the Fragments app open on the project (usefragments.com/download). Do not picture pages another way or call a change judged without them.

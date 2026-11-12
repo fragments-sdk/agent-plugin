@@ -22,7 +22,7 @@ function serveOff(said) {
   function answer(message) {
     if (!message || typeof message !== 'object' || message.id === undefined || message.id === null) return;
     var params = message.params || {}, id = message.id;
-    if (message.method === 'initialize') return send({ id: id, result: { protocolVersion: typeof params.protocolVersion === 'string' ? params.protocolVersion : '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'fragments-drift', version: '0' }, instructions: hosted ? '' : said + ' Tell the person once.' } });
+    if (message.method === 'initialize') return send({ id: id, result: { protocolVersion: typeof params.protocolVersion === 'string' ? params.protocolVersion : '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'fragments', title: 'Fragments', version: '0' }, instructions: hosted ? '' : said + ' Tell the person once.' } });
     if (message.method === 'tools/list') return send({ id: id, result: { tools: [] } });
     if (message.method === 'ping') return send({ id: id, result: {} });
     if (message.method !== 'tools/call') return send({ id: id, error: { code: -32601, message: said } });
@@ -98,6 +98,7 @@ function main() {
   process.env.GIT_NO_LAZY_FETCH = '1';
   // The bundler for a project with none (runtime/frames/kit.ts) is beside this file, not beside the CLI argv[1] will name.
   process.env.FRAGMENTS_CARRIED_ESBUILD = path.join(root, 'assets/esbuild-wasm');
+  process.env.FRAGMENTS_CARRIED_SASS = path.join(root, 'assets/sass');
   // The canonical server spawns workers from argv[1]; point it at its bundled CLI. `--plugin`: its host was given the
   // turn hooks, so a Codex session that never runs them is told once (runtime/drift-mcp.ts).
   process.argv = [process.execPath, cli, 'mcp', project, '--stdio', '--profile', binding.profile, '--plugin'];

@@ -3,28 +3,40 @@
   "public": true,
   "package": "@usefragments/check",
   "version": "0.1.0",
-  "engineBuild": "265508252c6d0e8f4d8a721f0e134731ba564b30dbd15d76599bdb22354c58f5",
-  "pluginVersion": "1.2.0",
+  "engineBuild": "9845e612139ce911f46f53d68e6ad743873aefba181a5d9b0e300618116881d1",
+  "pluginVersion": "1.3.0",
   "marketplace": "fragments",
   "plugin": "fragments",
-  "packageBuildSha256": "ce426d7142de5aec5477b2a261658e19c2ffd76f89d5ce7ac2827185c72115c3",
-  "contentHash": "3b4bb68b747663b1ba758c76ae97eabe9012714efbe2a141e77a773188b2dcbf",
+  "packageBuildSha256": "ae0b1dcd0f5734ce169775f1340d18b522a48a1ea226d6c6377b8c311464c970",
+  "contentHash": "502e9b4c4f15e8c3a94a1770649e52653d0b5269de8873e14c6d3aaa02774047",
   "receipts": {
-    "plugins/fragments": "816830aaa1aaecd43f26d74da54a5bad64e7feda242201b1b7612eef333ca1d0"
+    "plugins/fragments": "dd707bde3ef5e17a48422165f27943652c00fc52dbf71422a284acf45329997a",
+    "stores/claude/fragments": "36fe8e8c59df70178212edc9c23cce0e2385c3b197dfe90e005ae8b0b66b175e",
+    "stores/openai/fragments": "24ec1c28d62300d22c2ef63b10aac6cb124737f9fd3982770e4e0d7db06f056a"
   },
   "artifacts": {
     "cli.cjs": {
-      "bytes": 6856514,
-      "sha256": "d83c3da864a8b80153a70f68aba9927dc22358ff1485c6f5fd9166bfe9f36a86"
+      "bytes": 3711885,
+      "sha256": "ca1c0b1c884f89e149406202d33e493a9f03a0bd889185560ad870cf2b4e340f"
+    },
+    "typescript.cjs": {
+      "bytes": 3534003,
+      "sha256": "f3cf3676de34d368ac61736a72809bad5345cf7b983659346098d1b0be9848ee"
     },
     "drift.cjs": {
-      "bytes": 3961296,
-      "sha256": "aa84349454381a082a716484d4e8a1446720d026efcf955221a7e707a18bfcb6"
+      "bytes": 3966830,
+      "sha256": "d6918600fb33f06bce36a091c78f8107cfdea17a6d680d351e679a03d60f963d"
     }
   },
   "folders": {
     "plugins/fragments": [
       "claude",
+      "codex"
+    ],
+    "stores/claude/fragments": [
+      "claude"
+    ],
+    "stores/openai/fragments": [
       "codex"
     ]
   }

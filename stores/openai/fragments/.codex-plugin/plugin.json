@@ -1,0 +1,43 @@
+{
+  "name": "fragments",
+  "version": "1.3.0",
+  "description": "Your coding agent checks React UI against your project’s own design system when you ask, on your computer. It reads your files and writes nothing.",
+  "author": {
+    "name": "Fragments",
+    "url": "https://usefragments.com"
+  },
+  "homepage": "https://usefragments.com",
+  "repository": "https://github.com/fragments-sdk/agent-plugin",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "design-system",
+    "drift",
+    "tokens",
+    "components",
+    "react"
+  ],
+  "skills": "./skills/",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "Fragments",
+    "shortDescription": "Design system checks for UI",
+    "developerName": "Fragments",
+    "category": "Developer Tools",
+    "longDescription": "Fragments checks React UI against your project’s own design system: its components, its tokens and any rules you saved. Ask your agent to check what changed, and it runs the Fragments checker on your computer. The checker reads the project’s files and writes nothing, and nothing leaves your computer. It needs Node 22.9 or later and the desktop app. It checks when you ask, not as the agent writes.",
+    "capabilities": [
+      "Read"
+    ],
+    "brandColor": "#3D5AE8",
+    "websiteURL": "https://usefragments.com",
+    "supportURL": "https://github.com/fragments-sdk/agent-plugin/issues",
+    "privacyPolicyURL": "https://usefragments.com/privacy",
+    "termsOfServiceURL": "https://usefragments.com/terms",
+    "defaultPrompt": [
+      "Check the UI I changed against this project’s design system",
+      "Show this project’s components and tokens",
+      "Find hand-made UI here that should use this project’s own components"
+    ],
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.png"
+  }
+}

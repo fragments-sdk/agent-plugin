@@ -1,0 +1,28 @@
+{
+  "name": "fragments",
+  "version": "1.3.0",
+  "description": "Your coding agent checks UI against your project’s design system as it writes, with advisory findings unless you choose a strict contract.",
+  "author": {
+    "name": "Fragments",
+    "url": "https://usefragments.com"
+  },
+  "homepage": "https://usefragments.com",
+  "repository": "https://github.com/fragments-sdk/agent-plugin",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "design-system",
+    "drift",
+    "tokens",
+    "components",
+    "react",
+    "mcp"
+  ],
+  "displayName": "Fragments",
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://usefragments.com/docs/agents",
+  "supportUrl": "https://github.com/fragments-sdk/agent-plugin/issues",
+  "privacyPolicyUrl": "https://usefragments.com/privacy",
+  "termsOfServiceUrl": "https://usefragments.com/terms",
+  "mcpServers": "./mcp/claude.json",
+  "hooks": "./hooks/claude.json"
+}

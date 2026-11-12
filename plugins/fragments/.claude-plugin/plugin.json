@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Your coding agent checks UI against your project’s design system as it writes, with advisory findings unless you choose a strict contract.",
   "author": {
     "name": "Fragments",
