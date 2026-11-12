@@ -3,7 +3,8 @@
 # Fragments in Claude Code and Codex
 
 Your coding agent checks its own UI work against your design system as it writes. It runs the same Drift Engine as the
-Fragments app and your CI, so all three give the same answer. You don't need the app open, or installed.
+Fragments app and your CI, so all three give the same answer. Checks, the contract and Frames work without the app;
+[the tools that need it](#which-tools-need-the-fragments-app) say so when it isn't open.
 
 ## What it does
 
@@ -95,6 +96,10 @@ Restart any Claude Code session that's already open.
 **Install it once.** If you turned Fragments on in Claude's plugin directory, Claude Code already has it as
 `fragments@synced`: don't install it here too. Keep one or the other, so only one Fragments answers.
 
+The folders under `stores/` are the copies the plugin directories read, made by the same build: `stores/claude/fragments`
+for Claude's (without the carried bundler), and `stores/openai/fragments` for OpenAI's, a skills-only copy that checks
+when asked, with no hooks or server. Install from this marketplace with the commands above.
+
 ## Install in Codex
 
 ```bash
@@ -121,12 +126,45 @@ Ask your agent for a small change with a hand-written value, for example:
 
 `claude plugin list` or `codex plugin list` should show `fragments`.
 
+## Which tools need the Fragments app
+
+`see`, `judge`, `take`, `take_state`, `use`, `use_undo` and `frame_use` work through the Fragments app, open on your
+project; so does `frame_from_page` when you name the app's own screen instead of an address. Without the app, each
+says so in one line and does nothing. Get the app at [usefragments.com/download](https://usefragments.com/download).
+Everything else, checks, the contract and Frames among them, runs in the plugin alone.
+
+## What it runs
+
+- **Node** from your PATH (22.9 or later) runs `assets/launch.cjs`. It checks every file the plugin ships against the
+  SHA-256 in `PLUGIN_BUILD.json`, whose own hash the MCP configuration pins, then starts the engine,
+  `engine/dist/cli.cjs`, which loads the TypeScript compiler beside it (`engine/dist/typescript.cjs`) on first use.
+  The engine starts copies of itself as workers. Both bundles are minified; their licences are in `LICENSE` and
+  `THIRD_PARTY_NOTICES.txt`, and `engine/dist/BUILD.json` records how they were built.
+- **Hooks:** four, on a prompt, before and after an edit or shell command, and when a turn ends. Each calls a hidden
+  tool of the plugin's own server. They run no shell.
+- **Git,** in your project, to read history and keep the copy described below. Git is told never to fetch
+  (`GIT_NO_LAZY_FETCH=1`).
+- **Your Chrome, Edge, Brave or Chromium,** for Frames only: headless, with a new profile in your temp folder that is
+  deleted when it closes, background networking off, and driven over a pipe rather than a port.
+- **Your project's own esbuild and Sass** (and Tailwind, if it has one), loaded from its `node_modules`, to build the
+  components a frame draws. A project with no esbuild or no Sass installed uses the ones the plugin carries
+  (`assets/esbuild-wasm`, esbuild's own WebAssembly build, and `assets/sass`, Sass in one file). The copy in Claude's
+  plugin directory carries Sass but not esbuild, because the directory takes no file of 5 MiB or more: there, a project
+  without esbuild is told the one command that installs it, and its frames draw its components once it has.
+
 ## What it reads and writes
 
-- **Reads** your project's source, on your machine. **The plugin sends nothing off your machine:** it makes no network
-  calls. What it tells your agent joins the agent's conversation, like any tool result. One exception goes through
-  the app: `judge`, given an ask, has the Fragments app judge it with Claude on the account you already use there,
-  so the ask and the words on the pictured page go to Claude, as they do in the app.
+- **Reads** your project's source, on your machine. **The plugin sends nothing off your machine and fetches nothing:**
+  it makes no network calls, and it never downloads code or updates; updates come through your host's plugin update.
+  What it tells your agent joins the agent's conversation, like any tool result. Three things can reach past it, and
+  each only when you or your agent ask for it:
+  - `judge`, given an ask, has the Fragments app judge it with Claude on the account you already use there, so the ask
+    and the words on the pictured page go to Claude, as they do in the app. `take` and `frame_use` have the app's agent
+    build code, as it does in the app.
+  - `frame_from_page` opens the address it is given in the headless browser: normally your dev server on `localhost`.
+    That page loads what it would load in your own browser.
+  - A frame is drawn from your project's own stylesheets. If they load something from the web, such as a font, the
+    browser loads it too.
 - **Writes to your project only after you confirm** in the review panel or a supported native host dialog,
   and only the files each proposal lists:
   the contract's (`fragments.config.json` and files under `.fragments/`), `AGENTS.md` or `CLAUDE.md` for the
@@ -147,6 +185,8 @@ Ask your agent for a small change with a hand-written value, for example:
     7 days, at the next save or the next turn that ends with Fragments' hooks on.
 - **Pictures** from `see` and `judge` are kept outside your project, in `~/.fragments/runs`: each page's first and
   latest picture and what the app read on it, by run. The newest 20 runs of each project are kept.
+- **Frames** are kept outside your project too, in `~/.fragments/frames/`, a folder per project: each set's sources,
+  pictures and verdicts, until you remove them. A frame you remove is kept 7 days, then deleted.
 - **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
   copy.
 - **To delete it,** remove that folder. Fragments makes a new one the next time it runs.
@@ -177,8 +217,9 @@ Codex picks up a new version only when you add the plugin again; a new session i
 
 **Using the old plugin (0.9.0)?** Update the same way. 1.0 is a new plugin on a new engine, and it drops some of 0.9.0:
 
-- **The `search`, `get` and `tokens` tools.** The server was `fragments-workspace` and is now `fragments-drift`, with
-  `check`, `explain`, `design_system` and `contract`. Permission rules you wrote for the old server stop matching.
+- **The `search`, `get` and `tokens` tools.** The server was `fragments-workspace` and is now `fragments` in Claude Code
+  (`fragments-drift` in Codex), with `check`, `explain`, `design_system` and `contract`. Permission rules you wrote for
+  the old server stop matching.
 - **The Fragments Cloud contract and the hosted profile.** Everything runs on your machine.
 - **Opening a preview, and `/fragments:create`**, with the `create` and `design-system-pass` skills. Ask your agent
   directly.
@@ -214,8 +255,9 @@ codex plugin remove fragments@fragments
 codex plugin marketplace remove fragments
 ```
 
-Claude Code deletes what Fragments keeps when you uninstall it (add `--keep-data` to keep it). Codex doesn't: delete
-`~/.fragments/agent-state` yourself.
+Claude Code deletes the plugin's working folder when you uninstall it (add `--keep-data` to keep it). Codex doesn't:
+delete `~/.fragments/agent-state` yourself. In both, pictures and frames stay in `~/.fragments/runs` and
+`~/.fragments/frames` until you delete them.
 
 Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off there.
 

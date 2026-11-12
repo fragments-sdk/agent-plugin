@@ -1,0 +1,31 @@
+Fragments Local Use License
+
+Copyright 2026 Conan McNicholl. All rights reserved.
+
+"The Software" means the Fragments plugin for coding agents, including its engine, hooks, MCP server and skills, and
+the Fragments project checker (.fragments/drift.cjs). "The publisher" means Conan McNicholl.
+
+1. Free use. You may obtain, install, run and modify the Software for your own personal or commercial software
+development, free of charge and without a Fragments account. This includes installing it from the publisher's
+repository or from any marketplace or directory where the publisher lists it; the copies a coding-agent host, such as
+Claude Code or Codex, makes, caches or syncs for you in order to install, update or run it; and running it on your own
+machines, in CI, in dev containers, and in cloud environments that a coding-agent host runs for you.
+
+2. Project copies. You may include the unmodified project checker and its license notices in a software project's
+repository, including a public repository, so contributors and that project's CI can perform the same checks. You may
+share the Software within your organization and with collaborators working on your projects, and your organization may
+keep an internal copy or mirror for its own people. Keep this license and all applicable third-party notices with
+those copies.
+
+3. Reserved rights. This is proprietary software, not an open-source license. Except as sections 1 and 2 allow, no
+right is granted to publicly redistribute a standalone or repackaged Fragments engine or plugin, sublicense it, or
+offer it as a hosted service to third parties. Those uses need separate permission from the publisher. A fork created
+through GitHub's own features carries no rights beyond this license. Your own application code, design systems,
+findings and generated reports remain yours; this license imposes no license on them.
+
+4. Third-party software. Bundled dependencies keep their own licenses, reproduced in the THIRD_PARTY_NOTICES.txt files
+that ship with the Software. Those terms govern the applicable third-party code and are not restricted by this license.
+
+5. No warranty. To the extent permitted by applicable law, the Software is supplied as is, without warranties, and the
+publisher is not liable for damages arising from its use. Rights that applicable law does not permit to be excluded
+remain unaffected.

@@ -22,3 +22,5 @@ After the pass, read `page_coverage` once more. Report the actual pictured, queu
 If the page tools are absent or Fragments is unavailable, continue only with available read-only source and browser evidence. Report source-verified candidate paths and exact unmet prerequisites; explain that they were not registered or pictured. Do not ask for manual MCP configuration, install another agent, change host settings or block normal static checks.
 
 This workflow does not edit source or configuration, create records, submit forms, send invitations or change access to obtain a picture. Leave sign-in to the person on the app's own page. Keep representative addresses in Fragments' private page tools; do not print tokens, JWTs, credentials or record contents in logs, receipts or the final report.
+
+If none of this plugin's tools are in this session, say so plainly in one line. They load in Claude Code, Codex, and Cowork on the person’s computer; a chat that ignores local servers and hooks, such as Claude’s web chat, has none of them. The page tools also need the Fragments app.

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fragments": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/assets/launch.cjs",
+        "--receipt-sha256",
+        "36fe8e8c59df70178212edc9c23cce0e2385c3b197dfe90e005ae8b0b66b175e"
+      ]
+    }
+  }
+}

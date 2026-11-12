@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "mcp_tool",
-            "server": "plugin:fragments:fragments-drift",
+            "server": "plugin:fragments:fragments",
             "tool": "hook_prompt",
             "input": {
               "host": "claude",
@@ -23,7 +23,7 @@
         "hooks": [
           {
             "type": "mcp_tool",
-            "server": "plugin:fragments:fragments-drift",
+            "server": "plugin:fragments:fragments",
             "tool": "hook_pre",
             "input": {
               "host": "claude",
@@ -43,7 +43,7 @@
         "hooks": [
           {
             "type": "mcp_tool",
-            "server": "plugin:fragments:fragments-drift",
+            "server": "plugin:fragments:fragments",
             "tool": "hook_post",
             "input": {
               "host": "claude",
@@ -61,7 +61,7 @@
         "hooks": [
           {
             "type": "mcp_tool",
-            "server": "plugin:fragments:fragments-drift",
+            "server": "plugin:fragments:fragments",
             "tool": "hook_stop",
             "input": {
               "host": "claude",
