@@ -6,11 +6,11 @@ Your coding agent checks its own UI work against your design system as it writes
 Fragments app and your CI, so all three give the same answer. Drift, the contract and Frames work without the app;
 [the tools that need it](#which-tools-need-the-fragments-app) say so when it isn't open.
 
-<p align="center"><a href="#install-in-claude-code"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/media/frames-proof.gif" width="480" alt="A real session: an agent draws three directions of a landing page with a shadcn/ui project's own Button, Input and Card, and each frame is judged"></a></p>
+<p align="center"><a href="#install-in-claude-code"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/media/frames-proof.gif" width="480" alt="A recorded run: an agent draws three directions of a landing page with a shadcn/ui project's own Button, Input and Card, and each frame is measured"></a></p>
 
-A real session, sped up with the waits cut. One ask, three directions of a landing page, drawn with a shadcn/ui
+A recorded run, sped up with the waits cut. One ask, three directions of a landing page, drawn with a shadcn/ui
 project's own Button, Input and Card, then measured and judged. Two of the three first drafts were flagged, and the
-agent fixed each row in place before the frames were offered. [Install it in two lines](#install-in-claude-code).
+agent fixed each row in place. [Install it in two lines](#install-in-claude-code).
 
 ## What it does
 
