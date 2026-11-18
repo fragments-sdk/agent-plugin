@@ -3,29 +3,33 @@
   "public": true,
   "package": "@usefragments/check",
   "version": "0.1.0",
-  "engineBuild": "9845e612139ce911f46f53d68e6ad743873aefba181a5d9b0e300618116881d1",
-  "pluginVersion": "1.3.0",
+  "engineBuild": "bc0d7bff41556cbf0b0547c63dba9a6edfaa1c458359ccd8a52c016107051e1c",
+  "pluginVersion": "1.4.0",
   "marketplace": "fragments",
   "plugin": "fragments",
-  "packageBuildSha256": "ae0b1dcd0f5734ce169775f1340d18b522a48a1ea226d6c6377b8c311464c970",
-  "contentHash": "502e9b4c4f15e8c3a94a1770649e52653d0b5269de8873e14c6d3aaa02774047",
+  "packageBuildSha256": "74b66c326000add23746bc652656a97a2441174b12251011bf39d93f3cb48af4",
+  "contentHash": "bae6df5c15abc527afe18cbe28493ae5e60f94a1c612721b37cedcc55a600219",
   "receipts": {
-    "plugins/fragments": "dd707bde3ef5e17a48422165f27943652c00fc52dbf71422a284acf45329997a",
-    "stores/claude/fragments": "36fe8e8c59df70178212edc9c23cce0e2385c3b197dfe90e005ae8b0b66b175e",
-    "stores/openai/fragments": "24ec1c28d62300d22c2ef63b10aac6cb124737f9fd3982770e4e0d7db06f056a"
+    "plugins/fragments": "123277f79751eae2a434ae01ed034f573c86e200b5c35f1e27fb76e13fff67a0",
+    "stores/claude/fragments": "8589c75edc1141181bb269b7987b9207f02ae0157ba8195659a39bb7a1b2c6eb",
+    "stores/openai/fragments": "a8f4576b4f501c2e68097336c690983032a93cf862fee3b804788b2aa25dc4b1"
   },
   "artifacts": {
     "cli.cjs": {
-      "bytes": 3711885,
-      "sha256": "ca1c0b1c884f89e149406202d33e493a9f03a0bd889185560ad870cf2b4e340f"
+      "bytes": 3934152,
+      "sha256": "72edcbd110e39341dcac94b912186b6fb46535e23ac67c8daa8e71c0d4bef1d0"
     },
     "typescript.cjs": {
       "bytes": 3534003,
       "sha256": "f3cf3676de34d368ac61736a72809bad5345cf7b983659346098d1b0be9848ee"
     },
+    "camera.cjs": {
+      "bytes": 132319,
+      "sha256": "61bd687f926fcc9d505060a68fadb626114774d2dd3c74980829eb5e3f0928c3"
+    },
     "drift.cjs": {
-      "bytes": 3966830,
-      "sha256": "d6918600fb33f06bce36a091c78f8107cfdea17a6d680d351e679a03d60f963d"
+      "bytes": 4032235,
+      "sha256": "65d1ab7a0e1eb0c76bc2561764e8d2004af7957c05405410dcd2475f99dd0fa7"
     }
   },
   "folders": {

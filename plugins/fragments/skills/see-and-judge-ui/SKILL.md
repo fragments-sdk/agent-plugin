@@ -12,13 +12,14 @@ A UI change starts with `see` and is not done until `judge` holds.
 **Judge before you hand back.** Call `judge` (pass `ask` if `see` did not have it). It pictures the same pages again, then holds the change to:
 
 - the ask, judged against the pictures by Fragments' judge;
-- drift: only what this change added since `since` (default: the uncommitted change) counts;
-- the detail audit: one type scale, a 4 px spacing grid, AA contrast, 24 px targets, and nothing cut short without a way to read it.
+- Drift: only what this change added since `since` (default: the uncommitted change) counts;
+- the detail audit: one type scale, a 4 px spacing grid, AA contrast, 24 px targets, even gaps, shared edges, words on one centre line, and nothing cut short without a way to read it.
 
 Each row says held, to look at, missed or not judged, with where and why. Fix what missed, look at what it flags, and judge again. Done means every row holds. Report the verdict as it is: a row that was not judged is not a pass, and a run that was not judged in full is not done.
 
 `see` and `judge` keep a task's pictures and verdict together in one run, outside the project. Pass `new: true` to `see` to start a new run for a new task.
 
-**When Fragments can't picture.** The pictures come from the Fragments app's own camera, so it must be open on this project with the project started. If it isn't, `see` says so in one line: tell the person that line and continue with `check`. Never start the project's server yourself to get a picture, and never stand in a browser screenshot for a missing picture. A sign-in wall, a step that matched nothing or a page that landed elsewhere is said beside its picture: say it, don't guess past it.
+**With no Fragments app open.** Start the project's dev server yourself and pass its address as `url` (such as `http://localhost:5173`) to `see` and `judge`: the plugin pictures those pages with its own browser, secrets masked (the answer says which; every other value shows). Then Drift and the detail audit are judged; the ask, states behind clicks and signed-in pages are not, and the answer says so: report those lines as they are.
+Never stand in a browser screenshot for a missing picture. A sign-in wall, a step that matched nothing or a page that landed elsewhere is said beside its picture: say it, don't guess past it.
 
-If `see` and `judge` are not in this session, say so plainly in one line. They load in Claude Code, Codex, and Cowork on the person’s computer; a chat that ignores local servers and hooks, such as Claude’s web chat, has none of them. They also need the Fragments app open on the project (usefragments.com/download). Do not picture pages another way or call a change judged without them.
+If `see` and `judge` are not in this session, say so plainly in one line. They load in Claude Code, Codex, and Cowork on the person’s computer; a chat that ignores local servers and hooks, such as Claude’s web chat, has none of them. With the Fragments app open on the project (usefragments.com/download) they judge everything, the ask included. Do not picture pages another way or call a change judged without them.

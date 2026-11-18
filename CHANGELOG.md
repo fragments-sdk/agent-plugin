@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.4.0
+
+- **`see` and `judge` work with no app.** Give either one a page served on this computer and the plugin pictures it
+  in its own headless browser, secrets masked, then judges the change from those pictures: the drift it added and
+  the detail audit. It starts nothing, takes addresses on this computer only, and sends nothing anywhere. The ask,
+  states behind a click and signed-in pages are judged only with the Fragments app open, and the answer says so.
+- **List an app's pages from source.** `page_map` reads the routes from your code, with no app and no server, says
+  which pages need an example, and says what source alone cannot know. The `discover-pages` skill stands on it.
+- **Keep or send a set of frames as one page.** In a host with no canvas, such as a terminal, `frame_page` saves the
+  set as one self-contained file beside it, outside your project: each frame's picture, name and code. It opens
+  nothing and fetches nothing.
+- **Check only what changed.** The check file a project commits takes `--files` and `--since <base>`. `--since`
+  judges from where your work left the base, and says in one line when a change also edits the contract.
+- **Tailwind 4 theme tokens count their uses.** A utility named after a theme token is a use of that token, so
+  `design_system` stops showing "0 uses" for spacing, radius and colours the app does use.
+- **Faster first check.** The first check after `design_system` no longer waits for a process to start.
+
+`take`, `use` and `frame_use` still need the Fragments app open on this computer; without it they say so in one line
+and change nothing.
+
 ## 1.3.0
 
 - **Verdicts read like a design team's review:** one primary action per region, legible fields and words, controls

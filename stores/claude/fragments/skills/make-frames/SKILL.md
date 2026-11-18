@@ -16,9 +16,16 @@ has its parameters and answers; this skill has the order and the rules between t
 5. Ask the person which to build, by the frames’ names.
 6. When their message names a pick or asks to build one: frame_use { set }.
 
-Each answer's `Next:` names the call to make. Paste no rows or pictures to the person unless they ask.
-Before calling a screen done, use frame_states { set, id }; ask for a pick by frame name, with any open look row, "not checked" or kept off-scale value beside it. If the canvas cannot keep up, ask by name.
-A look or unverified frame gets two tries, then go on. A pick on the canvas lands in the person's message box: you hear it when they press Send. A pick said in chat that frame_list does not show: frames_pick { set, id }, then frame_use { set }.
+Each answer's `Next:` names the call to make. To the person, relay only its "Tell the person" lines; rows and pictures only when they ask.
+
+- Before calling a screen done: frame_states { set, id }.
+- Ask for a pick by frame name, with any open look row or "not checked" beside it.
+- If the canvas cannot keep up, ask by name.
+- A look or unverified frame gets two tries, then go on.
+- A pick on the canvas lands in the person's message box: you hear it when they press Send.
+- A pick said in chat that frame_list does not show: frames_pick { set, id }, then frame_use { set }.
+- Once the frames are judged, when the host has no canvas or the person wants one file to keep or send: frame_page { set },
+  then tell them where the file is. It opens nothing and sends nothing.
 
 ## If you are a subagent
 
@@ -34,6 +41,7 @@ with first in your report, and the parent chat makes it before it says anything 
 - `take` only for what a frame cannot show (see `take`).
 - **Draw only what was asked.** When it is unclear whether "the top bar" means the bar alone or the screen with it,
   draw the bar alone and a second frame named "In place".
+- **Name parts in the person's words:** `data-name` is said to them on the canvas, so "button", never "cta".
 - **A frame is a picture:** hooks are not in scope, so give a control its value and `onChange={() => {}}`. A
   component that needs the running app is refused by name; draw that part on the tokens.
 - **Walk it:** `to="Paid"` on a control in the JSX is the person's walk: Cmd- or Ctrl-click goes to the frame named
@@ -53,7 +61,7 @@ open.
 
 Values on the project's scale, contrast, names and keyboard; and the design as a team would review it, each a row at
 a part's box with its fix: one primary action per region; fields and words legible (no enabled field that reads as
-disabled, no words under 10 px); controls on one line; parts inside their column; labels in words ("± 5" says
+disabled, no words under 10 px); controls on one line; even gaps, shared edges and words on one centre line; parts inside their column; labels in words ("± 5" says
 nothing); real, whole content (stand-in words miss; grey blocks, a control cut off or words spilling ask a look). A
 skeleton on purpose is a frame whose state is "loading".
 

@@ -3,7 +3,7 @@
 # Fragments in Claude Code and Codex
 
 Your coding agent checks its own UI work against your design system as it writes. It runs the same Drift Engine as the
-Fragments app and your CI, so all three give the same answer. Checks, the contract and Frames work without the app;
+Fragments app and your CI, so all three give the same answer. Drift, the contract and Frames work without the app;
 [the tools that need it](#which-tools-need-the-fragments-app) say so when it isn't open.
 
 ## What it does
@@ -36,7 +36,15 @@ Fragments app and your CI, so all three give the same answer. Checks, the contra
 - **See the real pages, and judge the change.** With the Fragments app open on your project, `see` pictures its pages
   (at the widths and states you name) through the app, and `judge` pictures them again after the edit and holds the
   change to your ask, to the drift it added and to a detail audit (type scale, 4 px grid, contrast, target size,
-  nothing cut short). A row that could not run says so; it is never a pass. Without the app, both say so in one line.
+  nothing cut short). A row that could not run says so; it is never a pass.
+- **Or with no app at all.** Start your dev server and pass its address (such as `http://localhost:5173`) to `see`
+  and `judge`: the plugin pictures those pages in its own headless browser, secrets masked, and judges Drift and
+  the detail audit from them. Addresses on this computer only; nothing is sent anywhere. The ask, states behind a
+  click and signed-in pages are not judged this way, and the answer says so.
+- **List your app's pages from source.** `page_map` reads the routes from your code with no app and no server,
+  and says what source alone cannot know.
+- **Keep or send a set of frames as one page.** `frame_page` saves a set as one self-contained file beside it,
+  outside your project. It opens nothing and fetches nothing.
 
 It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
 
@@ -128,10 +136,12 @@ Ask your agent for a small change with a hand-written value, for example:
 
 ## Which tools need the Fragments app
 
-`see`, `judge`, `take`, `take_state`, `use`, `use_undo` and `frame_use` work through the Fragments app, open on your
-project; so does `frame_from_page` when you name the app's own screen instead of an address. Without the app, each
-says so in one line and does nothing. Get the app at [usefragments.com/download](https://usefragments.com/download).
-Everything else, checks, the contract and Frames among them, runs in the plugin alone.
+`take`, `take_state`, `use`, `use_undo` and `frame_use` work through the Fragments app, open on your project; so
+does `frame_from_page` when you name the app's own screen instead of an address. Without the app, each says so in
+one line and does nothing. `see` and `judge` use the app when it is open; without it they take an address on this
+computer and judge Drift and the detail audit, not the ask. Get the app at
+[usefragments.com/download](https://usefragments.com/download). Everything else, checks, the contract, the page
+list and Frames among them, runs in the plugin alone.
 
 ## What it runs
 
@@ -184,7 +194,8 @@ Everything else, checks, the contract and Frames among them, runs in the plugin 
   - **Undo records** (`changes`, `contract`): the files a contract change wrote, before and after. Deleted after
     7 days, at the next save or the next turn that ends with Fragments' hooks on.
 - **Pictures** from `see` and `judge` are kept outside your project, in `~/.fragments/runs`: each page's first and
-  latest picture and what the app read on it, by run. The newest 20 runs of each project are kept.
+  latest picture and what the app read on it, by run. The newest 20 runs of each project are kept, and a run
+  keeps at most 200 pages and widths.
 - **Frames** are kept outside your project too, in `~/.fragments/frames/`, a folder per project: each set's sources,
   pictures and verdicts, until you remove them. A frame you remove is kept 7 days, then deleted.
 - **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
