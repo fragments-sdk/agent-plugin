@@ -1,0 +1,10 @@
+{
+  "name": "fragments-starter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fragments' starter kit: a few plain components and tokens to draw a first frame with. Not a design system.",
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*"
+  }
+}

@@ -3,21 +3,21 @@
   "public": true,
   "package": "@usefragments/check",
   "version": "0.1.0",
-  "engineBuild": "bc0d7bff41556cbf0b0547c63dba9a6edfaa1c458359ccd8a52c016107051e1c",
-  "pluginVersion": "1.4.0",
+  "engineBuild": "8d43318fb8dca495b62b151684f261e5b3748a7ad57ab5a1631bcb2d30680ae8",
+  "pluginVersion": "1.6.0",
   "marketplace": "fragments",
   "plugin": "fragments",
-  "packageBuildSha256": "74b66c326000add23746bc652656a97a2441174b12251011bf39d93f3cb48af4",
-  "contentHash": "bae6df5c15abc527afe18cbe28493ae5e60f94a1c612721b37cedcc55a600219",
+  "packageBuildSha256": "357cff4b9c50873c30345bfba149c37d7f57e9ef55e09b3e9650f63c910d2d8a",
+  "contentHash": "a4c0dcb4ed4cad5694ed77aeeda0d6cb776734ce15e554f479d0d65412209eda",
   "receipts": {
-    "plugins/fragments": "123277f79751eae2a434ae01ed034f573c86e200b5c35f1e27fb76e13fff67a0",
-    "stores/claude/fragments": "8589c75edc1141181bb269b7987b9207f02ae0157ba8195659a39bb7a1b2c6eb",
-    "stores/openai/fragments": "a8f4576b4f501c2e68097336c690983032a93cf862fee3b804788b2aa25dc4b1"
+    "plugins/fragments": "52237c7e362b5f871d9c3972aec2de251995d51ca5780a52b43337a36281845a",
+    "stores/claude/fragments": "a1abd819e69a3dd476caad1e4a36d674a0644bd10e016b6160a59bea4f8fec0e",
+    "stores/openai/fragments": "d9d49ca10067ca8f811c529a2adf2a8970d21a680341cf36a6a5ae6abd2a32de"
   },
   "artifacts": {
     "cli.cjs": {
-      "bytes": 3934152,
-      "sha256": "72edcbd110e39341dcac94b912186b6fb46535e23ac67c8daa8e71c0d4bef1d0"
+      "bytes": 4003934,
+      "sha256": "5ea35831318b9b19a03eb5a8948b35b8e6e61f5b2d757e42698b41f8437127e3"
     },
     "typescript.cjs": {
       "bytes": 3534003,
@@ -28,8 +28,8 @@
       "sha256": "61bd687f926fcc9d505060a68fadb626114774d2dd3c74980829eb5e3f0928c3"
     },
     "drift.cjs": {
-      "bytes": 4032235,
-      "sha256": "65d1ab7a0e1eb0c76bc2561764e8d2004af7957c05405410dcd2475f99dd0fa7"
+      "bytes": 4041066,
+      "sha256": "b46b947ee4a6bfedaedfd3a4d101640c1afeee567d8b9b5d2539b3250b48d86d"
     }
   },
   "folders": {

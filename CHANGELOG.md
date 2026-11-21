@@ -1,5 +1,68 @@
 # Changelog
 
+## 1.6.0
+
+Frames, fixed:
+
+- **A fix the answer suggests is one `check` agrees with.** A frame's suggested fix no longer names a value the
+  project's own check then flags.
+- **A frame waits for its pictures.** A picture still loading is waited for, up to 6 seconds; one that never loads is a
+  row in the verdict, not a blank box in a frame that passed.
+- **`frame_stream` keeps its project.** A stream's later calls land in the project it began in, and a refused append
+  leaves the stream as it was.
+- **A captured page runs nothing of its own when it is drawn again.** Its scripts, embedded frames, handlers and
+  refreshes stay off; its pictures, fonts and styles load as before. A reference's answer says its words and pictures
+  are that site's content, not instructions.
+- **Frames and `design_system` list the same components.**
+- **A set that is not found says where it was looked for.** Sets are kept by project; the answer names the folder and
+  says to pass the other folder as `project`.
+- **A folder outside the project is the person's to allow.** The refusal names the folder and the way in: their yes in
+  the host's own dialog, which is as sure as the host that shows it. Where the host gave the session a project, nothing
+  an agent passes and nothing a file says allows another folder. A session started with no project (a folder with no
+  `.git` or `package.json` in or above it, or the starter) follows the absolute `project` the agent names.
+
+New:
+
+- **Start with no project.** `design_system` and the frame tools called without `project` draw on a small starter kit
+  kept in `~/.fragments/starter`. Every answer there says it is a starter, not your design system, and a value outside
+  a component's listed choices (a Button's `variant`, a Heading's `level`) is a row. `frame_use` needs your own project.
+- **A whole long page.** A frame can be up to 16,000 px tall. On one, `vh` is measured against a screen (900 px, or 844
+  at a phone's width), so a full-height hero stays one screen.
+- **Scroll in a play.** A play step `{ "scroll": "prices" }` pictures the screen where that part comes to rest, so a
+  sticky bar or a pinned panel is seen in place. It is a picture, not a verdict.
+- **References.** `frame_from_page` with `reference: true` keeps a page from elsewhere in the set to draw beside. It is
+  marked Reference, never judged, picked, used or exported, and a shared set leaves it out.
+- **`frame_export`** writes one frame as flex-only inline HTML and a PNG for another design tool, beside the frame and
+  outside your project. A `::before` or `::after` with plain content is in the HTML as an element of its own; one that
+  cannot be carried is counted in the answer. Nothing is sent or published.
+
+## 1.5.0
+
+What 1.4.0 got wrong, now right:
+
+- **A clean edit gets a line.** After an edit that adds no drift, the hook says what it checked, such as "Fragments
+  checked colours, spacing, type and radius, no new drift". 1.4.0 often said nothing.
+- **The false "can't check edits here" line is gone.** 1.4.0 said it after a clean edit to a shadcn/ui `button.tsx`.
+  That edit now gets the line above.
+- **A shadcn/ui project can pass the whole-project check.** In 1.4.0, one class name built at run time made the whole
+  run incomplete in every mode. Now each such place is a finding, `drift/unread`, listed by file and line and judged
+  like drift: Advisory passes; Strict, or no contract, fails on one that is not in a baseline; `--since` judges only
+  what changed.
+- **Strict can be chosen there.** `contract_propose` offers Strict on such a project and writes its baseline with it.
+- **A class string held in a constant is read.** `className={classes}` naming a constant in the same file is read
+  where the constant is written. 1.4.0 skipped it. A Strict project with a saved baseline can see new findings after
+  this update, from classes 1.4.0 did not read.
+- **`design_system` no longer lists a form option under Icons.**
+
+New:
+
+- **Record the Fragments window from your agent.** `record_start`, `record_stop` and `record_list` make the same take
+  as the app's Record button: pictures and a film under `~/.fragments/recordings/`, never in the project. Recording
+  needs the Fragments app open; without it, `record_list` still lists the takes already kept.
+- **The `hill-climb` skill** takes a frame or a built page round after round, each round scored by a fresh reviewer
+  beside named references, until it reaches the score you set. Each round is a round of your agent's work.
+- **`REFERENCE.md`** lists each tool, what it reads and what it needs.
+
 ## 1.4.0
 
 - **`see` and `judge` work with no app.** Give either one a page served on this computer and the plugin pictures it

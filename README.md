@@ -142,9 +142,9 @@ Ask your agent for a small change with a hand-written value, for example:
 
 ## Which tools need the Fragments app
 
-`take`, `take_state`, `use`, `use_undo` and `frame_use` work through the Fragments app, open on your project; so
-does `frame_from_page` when you name the app's own screen instead of an address. Without the app, each says so in
-one line and does nothing. `see` and `judge` use the app when it is open; without it they take an address on this
+`take`, `take_state`, `use`, `use_undo`, `frame_use`, `record_start` and `record_stop` work through the Fragments app,
+open on your project; so does `frame_from_page` when you name the app's own screen instead of an address. Without the
+app, each says so in one line and does nothing; `record_list` still lists the takes already kept. `see` and `judge` use the app when it is open; without it they take an address on this
 computer and judge Drift and the detail audit, not the ask. Get the app at
 [usefragments.com/download](https://usefragments.com/download). Everything else, checks, the contract, the page
 list and Frames among them, runs in the plugin alone.
@@ -203,7 +203,9 @@ list and Frames among them, runs in the plugin alone.
   latest picture and what the app read on it, by run. The newest 20 runs of each project are kept, and a run
   keeps at most 200 pages and widths.
 - **Frames** are kept outside your project too, in `~/.fragments/frames/`, a folder per project: each set's sources,
-  pictures and verdicts, until you remove them. A frame you remove is kept 7 days, then deleted.
+  pictures, verdicts and exports, until you remove them. A frame you remove is kept 30 days, then deleted.
+- **The starter,** for frames and `design_system` asked with no project, is copied to `~/.fragments/starter`, never
+  into a repository.
 - **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
   copy.
 - **To delete it,** remove that folder. Fragments makes a new one the next time it runs.

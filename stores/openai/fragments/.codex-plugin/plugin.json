@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "description": "Your coding agent checks React UI against your project’s own design system when you ask, on your computer. It reads your files and writes nothing.",
   "author": {
     "name": "Fragments",
