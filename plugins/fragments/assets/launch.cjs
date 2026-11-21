@@ -99,6 +99,8 @@ function main() {
   // The bundler for a project with none (runtime/frames/kit.ts) is beside this file, not beside the CLI argv[1] will name.
   process.env.FRAGMENTS_CARRIED_ESBUILD = path.join(root, 'assets/esbuild-wasm');
   process.env.FRAGMENTS_CARRIED_SASS = path.join(root, 'assets/sass');
+  // The starter a session with no project draws a first frame on (runtime/frames/starter.ts), copied to ~/.fragments/starter.
+  process.env.FRAGMENTS_CARRIED_STARTER = path.join(root, 'assets/starter');
   // The page reader frame_page writes a set into, read only when a page is saved (runtime/drift-mcp-frames.ts).
   process.env.FRAGMENTS_CARRIED_READER = path.join(root, 'assets/share-viewer.html');
   // The canonical server spawns workers from argv[1]; point it at its bundled CLI. `--plugin`: its host was given the

@@ -1,0 +1,87 @@
+/* The starter's components. Every value is a token from tokens.css. */
+.st-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: var(--text-md);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+.st-button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.st-button:disabled { opacity: 0.5; cursor: default; }
+.st-button[data-size='lg'] { height: 44px; padding: 0 var(--space-6); }
+.st-button[data-variant='primary'] { background: var(--color-accent); color: var(--color-on-accent); }
+.st-button[data-variant='secondary'] { background: var(--color-surface); color: var(--color-text); border-color: var(--color-border); }
+.st-button[data-variant='ghost'] { background: transparent; color: var(--color-text); }
+
+.st-card {
+  box-sizing: border-box;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.st-field { display: flex; flex-direction: column; gap: var(--space-2); }
+.st-field-label { font-size: var(--text-sm); font-weight: 500; color: var(--color-text); }
+.st-field-input {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-md);
+}
+.st-field-input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+.st-field-hint { font-size: var(--text-sm); color: var(--color-muted); }
+
+.st-badge {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1;
+}
+.st-badge[data-tone='accent'] { border-color: var(--color-accent); color: var(--color-accent); }
+.st-badge[data-tone='danger'] { border-color: var(--color-danger); color: var(--color-danger); }
+
+.st-stack { display: flex; flex-direction: column; gap: var(--space-4); }
+.st-stack[data-direction='row'] { flex-direction: row; }
+.st-stack[data-align='start'] { align-items: flex-start; }
+.st-stack[data-align='center'] { align-items: center; }
+.st-stack[data-align='end'] { align-items: flex-end; }
+.st-stack[data-gap='1'] { gap: var(--space-1); }
+.st-stack[data-gap='2'] { gap: var(--space-2); }
+.st-stack[data-gap='3'] { gap: var(--space-3); }
+.st-stack[data-gap='6'] { gap: var(--space-6); }
+.st-stack[data-gap='8'] { gap: var(--space-8); }
+.st-stack[data-gap='12'] { gap: var(--space-12); }
+
+.st-heading { margin: 0; color: var(--color-text); font-weight: 600; line-height: var(--leading-tight); }
+.st-heading[data-level='1'] { font-size: var(--text-2xl); }
+.st-heading[data-level='2'] { font-size: var(--text-xl); }
+.st-heading[data-level='3'] { font-size: var(--text-lg); }
+
+.st-text { margin: 0; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-body); }
+.st-text[data-size='sm'] { font-size: var(--text-sm); }
+.st-text[data-size='lg'] { font-size: var(--text-lg); }
+.st-text[data-muted] { color: var(--color-muted); }

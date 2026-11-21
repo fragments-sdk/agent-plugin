@@ -5,7 +5,7 @@
       "args": [
         "${CLAUDE_PLUGIN_ROOT}/assets/launch.cjs",
         "--receipt-sha256",
-        "8589c75edc1141181bb269b7987b9207f02ae0157ba8195659a39bb7a1b2c6eb"
+        "a1abd819e69a3dd476caad1e4a36d674a0644bd10e016b6160a59bea4f8fec0e"
       ]
     }
   }

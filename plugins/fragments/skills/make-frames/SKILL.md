@@ -26,6 +26,19 @@ Each answer's `Next:` names the call to make. To the person, relay only its "Tel
 - A pick said in chat that frame_list does not show: frames_pick { set, id }, then frame_use { set }.
 - Once the frames are judged, when the host has no canvas or the person wants one file to keep or send: frame_page { set },
   then tell them where the file is. It opens nothing and sends nothing.
+- No project yet: call design_system and frame without `project`. They are drawn on Fragments' starter kit (a few plain
+  components and tokens, kept under ~/.fragments). Tell the person it is a starter, not their design system. frame_use
+  needs their own project; frame_export hands a frame on as it is.
+- A whole long page (a landing page): give the frame its width and full height, up to 16000. Past 1600 tall (1500 at a
+  phone's width) its vh is one screen's (900 px; 844 at a phone's width), so a 100vh hero is one screen. Read it a
+  screen at a time with frame_see and a region; whole, its picture is too small to read. A play step
+  `{ "scroll": "prices" }` pictures the screen where that part comes to rest (a sticky bar, a pinned panel); it is a
+  picture, not a verdict.
+- A page from elsewhere to draw beside (another product's, an older version): frame_from_page { url, reference: true }.
+  It is captured whole and kept in the set, never judged, picked, used, shared or exported. Draw your own beside it; never copy
+  it whole.
+- When the person wants a frame in another design tool (Paper, Figma): frame_export { set, id } writes it as flex-only
+  inline HTML and a picture, and names both files. Hand the HTML on yourself; it is the frame as drawn, not code to build.
 
 ## If you are a subagent
 
