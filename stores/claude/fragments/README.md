@@ -1,316 +1,113 @@
 <p align="center"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/main/plugins/fragments/assets/logo.png" width="96" alt="Fragments"></p>
 
-# Fragments in Claude Code and Codex
+# Fragments in Claude Code, Codex, and MCP
 
-Your coding agent checks its own UI work against your design system as it writes. It runs the same Drift Engine as the
-Fragments app and your CI, so all three give the same answer. Drift, the contract and Frames work without the app;
-[the tools that need it](#which-tools-need-the-fragments-app) say so when it isn't open.
+Prototype on your real React components in ~2 seconds, catch design drift on every edit, and inspect your running app straight from your coding agent. **Free, local, zero sign-in.**
 
-<p align="center"><a href="#install-in-claude-code"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/media/frames-proof.gif" width="480" alt="A recorded run: an agent draws three directions of a landing page with a shadcn/ui project's own Button, Input and Card, and each frame is measured"></a></p>
+<p align="center"><a href="#install"><img src="https://raw.githubusercontent.com/fragments-sdk/agent-plugin/media/frames-proof.gif" width="520" alt="A recorded run: an agent draws three directions of a landing page using a project's own Button, Input and Card, and audits each frame automatically"></a></p>
 
-A recorded run, sped up with the waits cut. One ask, three directions of a landing page, drawn with a shadcn/ui
-project's own Button, Input and Card, then measured and judged. Two of the three first drafts were flagged, and the
-agent fixed each row in place. [Install it in two lines](#install-in-claude-code).
+One ask, three layout directions drawn in seconds on a React project's own `Button`, `Input`, and `Card`, then checked for AA contrast, 4px spacing grid, alignment, and target sizes before any source file changes.
 
-## What it does
+## Install
 
-- **After each edit**, the agent receives source locations for advisory findings, or detailed findings with your
-  system's value under a strict contract. A completed comparison with no new drift gets a short confirmation.
-- **Before it hands back**, the plugin reports new drift. Only an explicit strict contract may hold the turn for
-  a repair or an explanation; unconfigured and advisory projects receive suggestions.
-- **Before writing UI**, the agent can read your tokens and components, so it starts from what you already have.
-- **Change the contract from the terminal.** Ask your agent to approve a token, set the components to build with, or
-  add the check to CI. It shows you what would change; Fragments then asks you in Claude Code's or Codex's own dialog,
-  and writes only if you tick its box and accept. Nothing is committed, and your agent can undo the last change. The
-  dialog covers what Fragments writes; your agent's own edits are your host's to ask about.
-- **A receipt for each turn.** When a turn ends with drift fixed, kept or still open, you see one line, such as
-  `Fragments receipt: 3 fixed, 1 kept, 0 open`, and the file with the details.
-- **In CI,** the check writes the same lines to the run's summary page on GitHub, once the project's checker is this
-  release's.
-- **Mock a screen before you build it.** Ask for a layout, every state of a component, or two directions to compare:
-  the agent draws frames on your project's own components and tokens in your own Chrome, Edge, Brave or Chromium
-  (headless), pictures, measures and judges each, and keeps them outside your project, in `~/.fragments/frames/`.
-  Where your host shows MCP Apps, the set opens on a canvas in the chat and **Pick** chooses one. With the Fragments
-  app open, the picked frame becomes real code as one change with Undo.
-- **Try two or three directions.** With the Fragments app open, `take` builds each direction as real code in its own
-  copy of your app and pictures it, and `use` applies the one you pick as one change with Undo. Without the app,
-  both say so in one line.
-- **Find missing page examples.** Ask your agent to use `discover-pages` to investigate dynamic routes from source
-  and available browser context. Inside Fragments, its page tools can register one real example per pattern. A
-  standalone plugin session reports verified candidates and unmet prerequisites, without registering examples or
-  claiming screenshot coverage. Your app's source and data stay unchanged.
-- **See the real pages, and judge the change.** With the Fragments app open on your project, `see` pictures its pages
-  (at the widths and states you name) through the app, and `judge` pictures them again after the edit and holds the
-  change to your ask, to the drift it added and to a detail audit (type scale, 4 px grid, contrast, target size,
-  nothing cut short). A row that could not run says so; it is never a pass.
-- **Or with no app at all.** Start your dev server and pass its address (such as `http://localhost:5173`) to `see`
-  and `judge`: the plugin pictures those pages in its own headless browser, secrets masked, and judges Drift and
-  the detail audit from them. Addresses on this computer only; nothing is sent anywhere. The ask, states behind a
-  click and signed-in pages are not judged this way, and the answer says so.
-- **List your app's pages from source.** `page_map` reads the routes from your code with no app and no server,
-  and says what source alone cannot know.
-- **Keep or send a set of frames as one page.** `frame_page` saves a set as one self-contained file beside it,
-  outside your project. It opens nothing and fetches nothing.
+Needs **Node 22.9+**. Frames and headless inspection use your existing Chrome, Edge, Brave, or Chromium.
 
-It reads CSS, SCSS (including Modules) and class names in React projects. Tested on macOS.
-
-Installing the plugin does not initialize a design system or choose Fragments UI. Detected components belong to
-your project's own inventory and are reuse suggestions. Saved rules remain visible, but plugin turns are held
-only when `fragments.config.json` explicitly sets `contract.mode` to `"strict"`. A missing mode is advisory for
-plugin hooks; the standalone check and CI keep their existing verdict semantics.
-
-Contract setup is optional. The agent starts it only when you ask; a missing contract is not a reason to prompt
-you to create one. You can continue building with your current library or no library.
-
-## Review your contract
-
-Ask your agent to review this project's contract. In a host that supports MCP Apps, `contract_review` shows
-components, tokens, spacing and check settings. Select **Review changes**, inspect the proposed files, then choose
-**Save changes** to confirm those exact changes. **Undo last save** shows the saved change; **Confirm undo**
-restores its files if they have not changed since. **Not now** leaves pending choices unsaved.
-
-The panel owns contract confirmation. Your host may additionally ask permission to run its write tool, and
-its restrictions still apply. Panel Save does not require MCP form elicitation or a change of permission mode.
-A denied call is not retried through another writer. Expired or stale proposals need a fresh review; an uncertain
-write outcome is checked before another write is allowed. Nothing is committed.
-
-In a terminal, your agent shows the same state and proposed changes as text. The model-facing `contract_save`
-and `contract_undo` still require native confirmation. If that connection cannot display it or its approval
-policy automatically declines it, text inspection and proposals work but those tools do not write. The panel
-is the portable confirmation path in graphical hosts; all terminal permission modes are not certified.
-
-The local Claude Code/Codex plugin installation does not also register a cloud ChatGPT connector or a Claude
-Desktop extension. Panel support, permission handling and app-only tool isolation must be tested on the actual
-connection. A browser/protocol harness does not establish native compatibility.
-
-**Native acceptance, 15 October 2026:** the revised panel saved and undid an advisory contract in Codex desktop
-26.1007.71326 Full access and Claude Desktop 2.37337.1 (macOS). Claude's connection had no native elicitation;
-panel Save/Undo issued none. Cancelling Undo kept the saved files. Both completed Undo tests restored the
-exact starting files. This verifies those desktop configurations, not every host version or terminal mode.
-
-## Before you start
-
-- **Node 22.9 or newer.** Run `node --version`. macOS doesn't come with Node: get it from nodejs.org, or
-  `brew install node`.
-- **Claude Code or Codex**, installed and signed in.
-- **For frames:** Chrome, Edge, Brave or Chromium. Windows always has Edge.
-
-## Install in Claude Code
+### Claude Code (2 commands, no account)
 
 ```bash
 claude plugin marketplace add fragments-sdk/agent-plugin
-```
-
-```bash
 claude plugin install fragments@fragments
 ```
 
-Restart any Claude Code session that's already open.
+Restart any open Claude Code session.
 
-**Install it once.** If you turned Fragments on in Claude's plugin directory, Claude Code already has it as
-`fragments@synced`: don't install it here too. Keep one or the other, so only one Fragments answers.
-
-The folders under `stores/` are the copies the plugin directories read, made by the same build: `stores/claude/fragments`
-for Claude's (without the carried bundler), and `stores/openai/fragments` for OpenAI's, a skills-only copy that checks
-when asked, with no hooks or server. Install from this marketplace with the commands above.
-
-## Install in Codex
+### Codex (2 commands, no account)
 
 ```bash
 codex plugin marketplace add fragments-sdk/agent-plugin
-```
-
-```bash
 codex plugin add fragments@fragments
 ```
 
-**Then trust the hooks, once.** The next time you open Codex, it asks you to review the Fragments hooks: choose **Trust
-all and continue**. If you skip it, Codex runs without them and asks again next time; to trust them later, type
-`/hooks` and press `t`. If the current connection has not heard from them, Fragments reports that uncertainty once
-so your agent can check its edits manually. A hook heard in an earlier connection does not suppress this notice.
-An update that changes the hooks needs trusting again. Silence alone does not establish that an edit was checked.
+On first launch in Codex, choose **Trust all and continue** when asked to review Fragments hooks (or run `/hooks` and press `t` later).
 
-**Updating in Codex** takes one extra step: after `codex plugin marketplace upgrade fragments`, run
-`codex plugin add fragments@fragments` again. A new session alone keeps the old version.
+### Cursor, Antigravity, and other MCP hosts
 
-## Check it's working
-
-Ask your agent for a small change with a hand-written value, for example:
-"add a footer with `padding: 20px`". It should name the Fragments finding and say whether it kept the value.
-
-`claude plugin list` or `codex plugin list` should show `fragments`.
-
-## Which tools need the Fragments app
-
-`take`, `take_state`, `use`, `use_undo`, `frame_use`, `record_start` and `record_stop` work through the Fragments app,
-open on your project; so does `frame_from_page` when you name the app's own screen instead of an address. Without the
-app, each says so in one line and does nothing; `record_list` still lists the takes already kept. `see` and `judge` use the app when it is open; without it they take an address on this
-computer and judge Drift and the detail audit, not the ask. Get the app at
-[usefragments.com/download](https://usefragments.com/download). Everything else, checks, the contract, the page
-list and Frames among them, runs in the plugin alone.
-
-## What it runs
-
-- **Node** from your PATH (22.9 or later) runs `assets/launch.cjs`. It checks every file the plugin ships against the
-  SHA-256 in `PLUGIN_BUILD.json`, whose own hash the MCP configuration pins, then starts the engine,
-  `engine/dist/cli.cjs`, which loads the TypeScript compiler beside it (`engine/dist/typescript.cjs`) on first use.
-  The engine starts copies of itself as workers. Both bundles are minified; their licences are in `LICENSE` and
-  `THIRD_PARTY_NOTICES.txt`, and `engine/dist/BUILD.json` records how they were built.
-- **Hooks:** four, on a prompt, before and after an edit or shell command, and when a turn ends. Each calls a hidden
-  tool of the plugin's own server. They run no shell.
-- **Git,** in your project, to read history and keep the copy described below. Git is told never to fetch
-  (`GIT_NO_LAZY_FETCH=1`).
-- **Your Chrome, Edge, Brave or Chromium,** for Frames only: headless, with a new profile in your temp folder that is
-  deleted when it closes, background networking off, and driven over a pipe rather than a port.
-- **Your project's own esbuild and Sass** (and Tailwind, if it has one), loaded from its `node_modules`, to build the
-  components a frame draws. A project with no esbuild or no Sass installed uses the ones the plugin carries
-  (`assets/esbuild-wasm`, esbuild's own WebAssembly build, and `assets/sass`, Sass in one file). The copy in Claude's
-  plugin directory carries Sass but not esbuild, because the directory takes no file of 5 MiB or more: there, a project
-  without esbuild is told the one command that installs it, and its frames draw its components once it has.
-
-## What it reads and writes
-
-- **Reads** your project's source, on your machine. **The plugin sends nothing off your machine and fetches nothing:**
-  it makes no network calls, and it never downloads code or updates; updates come through your host's plugin update.
-  What it tells your agent joins the agent's conversation, like any tool result. Three things can reach past it, and
-  each only when you or your agent ask for it:
-  - `judge`, given an ask, has the Fragments app judge it with Claude on the account you already use there, so the ask
-    and the words on the pictured page go to Claude, as they do in the app. `take` and `frame_use` have the app's agent
-    build code, as it does in the app.
-  - `frame_from_page` opens the address it is given in the headless browser: normally your dev server on `localhost`.
-    That page loads what it would load in your own browser.
-  - A frame is drawn from your project's own stylesheets. If they load something from the web, such as a font, the
-    browser loads it too.
-- **Writes to your project only after you confirm** in the review panel or a supported native host dialog,
-  and only the files each proposal lists:
-  the contract's (`fragments.config.json` and files under `.fragments/`), `AGENTS.md` or `CLAUDE.md` for the
-  components it asks agents to use, and, if you add the check to CI, `.github/workflows/fragments-drift.yml`. Nothing
-  is committed. Saved local rules take effect immediately. Commit and push a CI workflow to run it on GitHub.
-- It keeps its working files in one folder: in Claude Code, `~/.claude/plugins/data/fragments-fragments`; in Codex,
-  `~/.fragments/agent-state`. In it:
-  - **Earlier contents of the files a turn changes,** so Fragments can tell what the turn added. Cleared when the turn
-    ends.
-  - **A git copy of your project's source** (`shadow`): the files it checks, copied the first time in a turn that the
-    agent runs a shell command that could write, so Fragments can see what the command changed. Older versions of
-    changed files go after an hour; the copy stays until you delete the folder.
-  - **Run records** (`sessions`): which files each turn changed, and how long each check took. Kept 7 days.
-  - **A compile cache** (`compile-cache`), so the checker starts faster.
-  - **Receipts** (`receipts`): one Markdown file per turn that had drift, with the agent's own words on any it kept.
-    Kept 30 days.
-  - **Undo records** (`changes`, `contract`): the files a contract change wrote, before and after. Deleted after
-    7 days, at the next save or the next turn that ends with Fragments' hooks on.
-- **Pictures** from `see` and `judge` are kept outside your project, in `~/.fragments/runs`: each page's first and
-  latest picture and what the app read on it, by run. The newest 20 runs of each project are kept, and a run
-  keeps at most 200 pages and widths.
-- **Frames** are kept outside your project too, in `~/.fragments/frames/`, a folder per project: each set's sources,
-  pictures, verdicts and exports, until you remove them. A frame you remove is kept 30 days, then deleted.
-- **The starter,** for frames and `design_system` asked with no project, is copied to `~/.fragments/starter`, never
-  into a repository.
-- **Size:** about 27 MB for a repository of 3,800 source files over a week of use. Almost all of it is the git
-  copy.
-- **To delete it,** remove that folder. Fragments makes a new one the next time it runs.
-- **CI** runs the checker pinned in your project at `.fragments/drift.cjs`, added by the Fragments app or by your
-  agent with your yes. It is the same file either way.
-
-## Update
+Clone the repository once:
 
 ```bash
-claude plugin marketplace update fragments
+git clone https://github.com/fragments-sdk/agent-plugin.git ~/.fragments/agent-plugin
 ```
+
+Add the stdio MCP server to your host config (`~/.cursor/mcp.json`, Antigravity MCP settings, or any MCP client), replacing `<you>` with your username:
+
+```json
+{
+  "mcpServers": {
+    "fragments": {
+      "command": "node",
+      "args": [
+        "/Users/<you>/.fragments/agent-plugin/plugins/fragments/engine/dist/cli.cjs",
+        "mcp",
+        "--session",
+        "--stdio",
+        "--profile",
+        "read",
+        "--plugin"
+      ]
+    }
+  }
+}
+```
+
+Cursor, Antigravity, and generic MCP hosts get every Fragments MCP tool. On Windows, use `"C:/Users/<you>/.fragments/agent-plugin/plugins/fragments/engine/dist/cli.cjs"`. Because they do not load Claude Code or Codex turn hooks, ask your agent to run `check` after UI edits. For SHA-256 verification and carried esbuild/Sass/starter assets in projects without their own bundler, launch `plugins/fragments/assets/launch.cjs --receipt-sha256 <hash>` using the hash in `plugins/fragments/mcp/codex.json`.
+
+### One-shot CLI check (any terminal or CI, nothing installed)
 
 ```bash
-claude plugin update fragments@fragments
+npx -y github:fragments-sdk/agent-plugin .
 ```
 
-In Codex:
+Pass `--since main` to check only new drift on a branch (`--since origin/main` in a CI checkout, which has only the remote's branch; it needs the full history, `fetch-depth: 0` in GitHub Actions), or `--json` for machine-readable output.
 
-```bash
-codex plugin marketplace upgrade fragments
-```
+## What you get
 
-```bash
-codex plugin add fragments@fragments
-```
+- **~2s Real-Component Frames:** Ask your agent for 2 to 3 layout directions, or every screen state like empty, loading, and error. It renders them in headless Chrome on your real React components and tokens under `~/.fragments/frames/`. Each frame is checked for AA contrast, 4px grid spacing, alignment, targets, and props before touching code.
+- **Self-Growing Contract + One Drift Engine:** Drift is code that leaves your tokens and components. Fragments infers rules from your repo, checks every edit, and ends with a receipt (`Fragments receipt: 3 fixed, 1 kept, 0 open`). Open `contract_review` for swatches, Unified/Split diffs, and Undo, or run `--since <base>` in CI.
+- **Headless browser inspection (`open`, `read`, `act`, `see`, `judge`, `page_map`):** Drive your dev server, inspect routes, check accessibility and console errors, and run visual audits from your terminal.
+- **Live Multi-Page Canvas (with free Fragments Desktop):** View every running page across desktop and phone widths at once, including behind sign-in. Click any element for its React file and line, measure spacing, or force interactive states. Turn a picked frame into real code (`frame_use`) with diffs and Undo.
+- **Hosted Review Links -> Back to Agent (with Fragments Desktop):** Share a review link (`link_publish`) so teammates inspect and pin comments in any browser with no install. Pull threads into your agent (`link_review`), push updates (`link_revise`), and resolve threads (`link_resolve`). Free: 3 new links a month. Pro: no limit.
+- **Free Zero-Login Plugin + Built-in Record:** The plugin is free with no sign-in required. Pair it with the free **Fragments Desktop** app (Mac Apple Silicon and Windows x64) for Canvas and Review Links. Use built-in Record (`record_start`, `record_stop`, `record_list`) for clean MP4 turn walkthroughs.
 
-Codex picks up a new version only when you add the plugin again; a new session isn't enough.
+**[Download Fragments Desktop for Mac or Windows ->](https://www.usefragments.com/download?utm_source=github&utm_medium=readme&utm_campaign=nov-100)**
 
-**Using the old plugin (0.9.0)?** Update the same way. 1.0 is a new plugin on a new engine, and it drops some of 0.9.0:
+## Try it in 30 seconds
 
-- **The `search`, `get` and `tokens` tools.** The server was `fragments-workspace` and is now `fragments` in Claude Code
-  (`fragments-drift` in Codex), with `check`, `explain`, `design_system` and `contract`. Permission rules you wrote for
-  the old server stop matching.
-- **The Fragments Cloud contract and the hosted profile.** Everything runs on your machine.
-- **Opening a preview, and `/fragments:create`**, with the `create` and `design-system-pass` skills. Ask your agent
-  directly.
+1. **Test live drift catching:** Ask your agent *"add a small footer with `padding: 20px` and `#6b7280` text"*. It names the Fragments finding right after the edit.
+2. **Test real-component Frames:** Ask your agent *"draw 3 layout directions for a settings header using our existing components before editing any files"*.
 
-If you choose to migrate that project, preserve its old configuration first and review which rules you want to
-carry forward. Remove `@usefragments/cli` and only its hook entries (in `.claude/settings.json`, `.codex/hooks.json`
-or `.cursor/hooks.json`) when you retire that engine, so two engines do not answer. Do not delete whole host settings
-files or another tool's hooks.
+## Plugin only vs. with Fragments Desktop
 
-Legacy files can include `fragments.config.ts` (or `.js`), `fragments.manifest.json`, `.fragments/manifest.json`
-and `.fragments/sync.json`. A `.fragments/tokens.json` with `catalogRevision` belongs to the old CLI; the current
-approved-token file uses `"version": 1` and a `tokens` list. Review and remove only obsolete files after preserving
-the policy you need. Until incompatible authority is resolved, Fragments reports incomplete coverage and leaves
-the configuration alone; an update does not authorize an automatic migration.
+| Capability | Plugin only (zero sign-in) | With Fragments Desktop |
+| --- | --- | --- |
+| Draw, audit, and export real-component Frames | Yes | Yes + live canvas and Pick -> Build (`frame_use`) |
+| Live edit checks, receipts, and GitHub CI | Yes | Yes + visual Drift view |
+| Contract review panel, save, and Undo | Yes | Yes |
+| Headless browser (`open`/`read`/`act`) and `page_map` | Yes | Yes |
+| Visual `see` and `judge` on localhost | Yes (drift + detail audit) | Yes (ask judge, interactive states, signed-in pages) |
+| Live multi-page canvas, before/after Undo, built-in Record | No | Yes |
+| Hosted review links (`link_publish`, `link_review`, `link_revise`) | No | Yes (Free: 3 new links a month; Pro: no limit) |
 
-## Uninstall
+## Privacy and what it touches
 
-```bash
-claude plugin uninstall fragments@fragments
-```
+- **Runs locally and sends nothing off your machine.** The plugin makes no network calls and fetches no updates. Updates come through your host.
+- **Never edits your repo silently.** Contract and CI writes (`fragments.config.json`, `.fragments/*`, `AGENTS.md`/`CLAUDE.md`, GitHub Actions check file) require your confirmation in the review panel or host dialog. Nothing is committed.
+- **Keeps working state outside your project:** `~/.claude/plugins/data/fragments-fragments` (or `~/.fragments/agent-state`), `~/.fragments/frames/`, and `~/.fragments/runs/`. Delete those folders any time to reset.
+- **Exceptions only when you explicitly ask:** `frame_from_page`, `open`, `read`, `act`, and `set` open the URL you pass in headless Chromium; `judge`, `take`, `frame_use`, `record_start`, and `link_*` talk locally to the open Fragments Desktop app.
 
-```bash
-claude plugin marketplace remove fragments
-```
+## More
 
-In Codex:
-
-```bash
-codex plugin remove fragments@fragments
-```
-
-```bash
-codex plugin marketplace remove fragments
-```
-
-Claude Code deletes the plugin's working folder when you uninstall it (add `--keep-data` to keep it). Codex doesn't:
-delete `~/.fragments/agent-state` yourself. In both, pictures and frames stay in `~/.fragments/runs` and
-`~/.fragments/frames` until you delete them.
-
-Turned it on in Claude's plugin directory (`fragments@synced`)? Turn it off there.
-
-## Limits
-
-- **Confirmation depends on the surface.** Compatible graphical panels use explicit Save changes and Confirm
-  undo; the host must forward app-only tool calls and private metadata. Native model/terminal tools still need
-  the host's confirmation dialog. Host permission denials remain in force; rendering alone grants no write access.
-
-- **Shell writes:** a file the agent writes with a shell command, such as `cat > file`, gets no note right after the
-  edit. Only edit tools say which files they changed.
-- **Values the agent names:** if the agent's closing reply names a drifted value, for example one you asked it to keep,
-  Fragments treats it as explained and lets the agent finish.
-- **Very large files:** Fragments reads files up to 1 MB. If one of your app's stylesheets is bigger, or a file the
-  agent changed is, Fragments doesn't guess: it tells you once a session that it can't check, and why. Other big files,
-  such as generated code or data, don't stop it.
-
-## If something's wrong
-
-- **"Fragments is off: it needs Node 22.9 or later":** your `node` is too old. Upgrade it, then restart the session.
-- **Codex says nothing about drift:** inspect `/hooks` and trust the hooks if you want automatic checks. Until
-  current feedback establishes coverage, ask the agent to run `check` on its edits.
-- **Claude Code shows hook errors:** run `node --version` in the same terminal you start Claude Code from.
-- **Started from the Dock?** The Claude and Codex apps take your PATH from your login shell. If Fragments doesn't start
-  there, check that `node --version` works in a new terminal window.
-
-## Support
-
-[Report an issue](https://github.com/fragments-sdk/agent-plugin/issues) · hello@usefragments.com ·
-[Website](https://usefragments.com) · [Privacy](https://usefragments.com/privacy) ·
-[Terms](https://usefragments.com/terms) ·
-[Changes](https://github.com/fragments-sdk/agent-plugin/blob/main/CHANGELOG.md)
+[Full reference and troubleshooting](https://github.com/fragments-sdk/agent-plugin/blob/main/REFERENCE.md) · [Changelog](https://github.com/fragments-sdk/agent-plugin/blob/main/CHANGELOG.md) · [Report an issue](https://github.com/fragments-sdk/agent-plugin/issues) · [usefragments.com](https://usefragments.com) · hello@usefragments.com
 
 ## License
 
-Free to use for your own projects, including commercial ones, under the Fragments Local Use License; see
-[LICENSE](LICENSE). Versions 0.9.0 and earlier stay under FSL-1.1-MIT, as released.
+Free to use for your own projects, including commercial ones, under the Fragments Local Use License; see [LICENSE](LICENSE).

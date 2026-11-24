@@ -1,23 +1,23 @@
 {
   "schema": "fragments-local-plugin/1",
   "name": "fragments",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "package": "@usefragments/check",
   "packageVersion": "0.1.0",
-  "engineBuild": "8d43318fb8dca495b62b151684f261e5b3748a7ad57ab5a1631bcb2d30680ae8",
-  "packageBuildSha256": "357cff4b9c50873c30345bfba149c37d7f57e9ef55e09b3e9650f63c910d2d8a",
+  "engineBuild": "3424765902c87befcd183666b8b91eda10834699606d1f4380c49564611f6be7",
+  "packageBuildSha256": "46ccda73610dba518da2a35e6c9fddd6b550fc839f3543933971394f10525124",
   "generatorSha256": "604c6788acccdb778b9b705e71a998ccb5b9fa2951a28cd4af1ee97ae27798d2",
-  "contentHash": "a4c0dcb4ed4cad5694ed77aeeda0d6cb776734ce15e554f479d0d65412209eda",
+  "contentHash": "a0673c26c030be2fec84af7f19a21defb175378c974ea71a2e668d7cb29582b0",
   "files": {
-    ".codex-plugin/plugin.json": "48fc07b498a41e0ec25c4a02772d120a71e8bc0aab64c149ef661935797527a4",
+    ".codex-plugin/plugin.json": "43e28a9025d46e9dba24884e6d8cb957e41e40d9571e8c9cc9d35a49542f9373",
     "LICENSE": "54317b9152e35b682d1c953a375d0a2c84ff7531740c6a5fdb4e6c7ac4bd183f",
     "README.md": "38adac41b3c71b368f3000452fa18bf93e96370c43547338442e5d2f5280dec0",
     "THIRD_PARTY_NOTICES.txt": "6e555fc99f3d1e208d38bb001550caee638152afd2e336732105d3a9617e6faf",
     "assets/icon.svg": "7480426ad5f16bccaf9248c2e84f8c9ee388dc0f6a20d1f93b4a50a10e76a82a",
     "assets/logo.png": "03e5db8cef7ee18db4037f1073960432320c499d65ea255b9686496786a66fb0",
     "skills/check-react-ui/SKILL.md": "e815d02192895e4f576e18fb2d6d04ec50940b218a1517f2332dafbde8a155b0",
-    "skills/check-react-ui/scripts/BUILD.json": "357cff4b9c50873c30345bfba149c37d7f57e9ef55e09b3e9650f63c910d2d8a",
-    "skills/check-react-ui/scripts/cli.cjs": "5ea35831318b9b19a03eb5a8948b35b8e6e61f5b2d757e42698b41f8437127e3",
+    "skills/check-react-ui/scripts/BUILD.json": "46ccda73610dba518da2a35e6c9fddd6b550fc839f3543933971394f10525124",
+    "skills/check-react-ui/scripts/cli.cjs": "d2a20bc215fa97c9fe7f9ccf10e0b1aa6ebe8365700414c760a3ddef483623ca",
     "skills/check-react-ui/scripts/typescript.cjs": "f3cf3676de34d368ac61736a72809bad5345cf7b983659346098d1b0be9848ee"
   }
 }
