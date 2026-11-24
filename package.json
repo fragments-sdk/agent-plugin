@@ -1,6 +1,6 @@
 {
   "name": "fragments-agent-plugin",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "description": "The Fragments design-system check, run once on a project: npx -y github:fragments-sdk/agent-plugin .",
   "license": "SEE LICENSE IN LICENSE",

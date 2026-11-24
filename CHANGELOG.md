@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.7.0
+
+Frames and agent tools, refined:
+
+- **Readable desktop previews with `pictures: "medium"`.** Frame calls now accept `pictures: "medium"` (up to 720 px wide) so desktop frames read clearly in one turn without shipping full-size PNGs.
+- **Replace every match in one `frame_edit`.** Pass `all: true` on a find/replace edit to update repeated patterns across a frame in one call instead of switching to offsets.
+- **All verdict rows in one `frame_see`.** Pass `judge: true` with `all: true` to read every verdict row (up to 12 KB) without paging through `skip`.
+- **Clearer parse errors and fewer `unverified` frames.** Parse failures now report the frame's own line number with a short source excerpt, and stop claiming types are clean or running the visual audit on an empty DOM. Type checks also wait briefly (`800 ms`) after rendering so near-finished checks land in the same turn.
+- **Compact `design_system` answers.** An unqueried `design_system` call names the first 5 building blocks and, per token category, 8 values for colour and spacing and 3 for the rest, resolved tokens before unreadable ones. Pass `query` for more (up to 80 a group); duplicate component names disambiguate by import path.
+- **A saved Figma file beside your frames (`frame_from_figma`).** Pass the whole path of a `.fig` (in Figma: File → Save local copy…) and its frames land as references, drawn as Figma has them and read on your computer, with nothing sent anywhere. `list: true` names its pages and frames first; up to 12 frames a call, and the answer says how to get the rest. A file outside the project is read once you say yes in your host's dialog. A Figma link is not read.
+- **`record_start` takes `pointer`.** `pointer: true | false` draws or leaves out your pointer (with a ring on each press) for one take; without it the take follows Fragments' Settings, and the answer says which was used.
+- **Cleaner set titles and `frame_page` reliability.** Frame set titles pull directly from the ask, and `frame_page` reliably bundles every frame's picture, name, and readable code into one offline HTML file.
+- **Hosted review links from your agent.** Publish review links (`link_publish`), pull pinned reviewer threads with visual crops (`link_review`), push V2 fixes onto the same link (`link_revise`, using no extra monthly link), reply (`link_reply`), resolve (`link_resolve`), show live fix progress (`link_progress`), and list or manage links (`link_list`, `link_manage`) through the open Fragments Desktop app.
+- **Polished Contract Review UI.** Updated the portable `contract_review` panel to match Desktop 0.12.0 warm obsidian, with live token swatches, spacing scale bars, corner-radius boxes, Unified and Split code diffs, keyboard focus rings, and crisp 420 px narrow responsiveness.
+- **Updated README and multi-host setup.** Rewrote the public README around all five product pillars and added verified setup snippets for Claude Code, Codex, Cursor, Antigravity, generic stdio MCP hosts, and one-shot `npx -y github:fragments-sdk/agent-plugin .`.
+
 ## 1.6.0
 
 Frames, fixed:
@@ -115,7 +131,7 @@ and change nothing.
   a detail audit. A row that could not run says so; it is never a pass.
 - **Try two or three directions.** With the app open, `take` builds each direction as real code in its own copy of
   your app and pictures it; `use` applies the one you pick as one change with Undo.
-- **Find missing page examples** with the `discover-pages` skill, from your source and available browser context.
+- **Find missing page examples** with the `discover-pages` skill, from your source and available browser evidence.
 
 Frames needs no app and no sign-in. `see`, `judge`, `take`, `use` and `frame_use` need the Fragments app open on this
 computer; without it they say so in one line and change nothing.
@@ -125,7 +141,7 @@ computer; without it they say so in one line and change nothing.
 - **Optional contract review.** Ask to review the contract in a compatible MCP Apps host for a view of components,
   tokens, spacing and check settings with proposed files and Undo. The panel confirms exact changes with Save
   changes and Confirm undo, without needing a native confirmation dialog. Host permissions still apply.
-  Terminals retain the text workflow and native confirmation. Setup stays optional and user-initiated.
+  Terminals retain the text path and native confirmation. Setup stays optional and user-initiated.
 
 - **Project authority:** detected components are reuse suggestions, general foundations are optional, and reads
   identify the selected project and app. Installing globally does not initialize a project or select Fragments UI.
@@ -142,7 +158,7 @@ computer; without it they say so in one line and change nothing.
   committed, and Undo takes it back while the files are as it left them. Sessions without the required confirmation
   support leave files unchanged.
 - **Add the check to CI** the same way: it writes the contract's mode in `fragments.config.json`, `.fragments/drift.cjs`
-  (the same checker the Fragments app writes) and a GitHub Actions workflow, and a baseline when it is strict. The plugin now carries that checker, so it is about twice the size.
+  (the same checker the Fragments app writes) and a GitHub Actions file, and a baseline when it is strict. The plugin now carries that checker, so it is about twice the size.
 - **A receipt for each turn** that had drift, in the plugin's own folder, and one line when the turn ends at a stop:
   `Fragments receipt: N fixed, K kept, O open`. A turn that ends when you write again, or sits idle, gets its receipt
   without the line.
@@ -166,8 +182,8 @@ computer; without it they say so in one line and change nothing.
   drift or says why it kept it. Codex asks you to trust the four hooks the next time it starts, and runs them once you
   do. When Fragments can't check an edit, it says why once a session. A renamed or moved file keeps its old drift.
 - **Four tools:** `check`, `explain`, `design_system` and `contract`, on the `fragments-drift` server.
-- **Removed from 0.9.0:** the `search`, `get` and `tokens` tools and the `fragments-workspace` server; the Fragments
-  Cloud contract and the hosted profile; preview opening, `/fragments:create`, and the `create` and `design-system-pass`
+- **Removed from 0.9.0:** the `search`, `get` and `tokens` tools and the `fragments-workspace` server; the hosted
+  legacy contract and profile; preview opening, `/fragments:create`, and the `create` and `design-system-pass`
   skills. Remove `@usefragments/cli` and the hooks it installed in your projects.
 - **License:** changed from FSL-1.1-MIT to the Fragments Local Use License. Versions 0.9.0 and earlier stay under
   FSL-1.1-MIT, as released.
